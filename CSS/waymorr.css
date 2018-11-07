@@ -38,10 +38,15 @@ body{
 }
 
 nav > ul > li{
-    /* float:left; */
     display: inline-block;
     position: relative;
     padding: 15px;
+}
+nav > ul > li:hover{
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: red; */
+    /* color: white; */
+    text-decoration: underline;
 }
 nav > ul{
     padding: 0;
@@ -50,6 +55,7 @@ nav > ul{
     color: red;
     background: white;
     font-size: 18pt;
+    text-align: center;
 }
 nav{
     background: white;

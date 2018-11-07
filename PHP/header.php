@@ -7,7 +7,36 @@
             <nav>
                 <ul >
                     <li><a class="sport_font">Home</a></li>
-                    <li><a class="sport_font">Test</a></li>
+                    <li><a class="sport_font">About Us</a></li>
+                    <li><a class="sport_font">Baseball</a>
+                        <ul>
+                            <li><a class="sport_font">Tee-Ball</a></li>
+                            <li><a class="sport_font">Peanuts</a></li>
+                            <li><a class="sport_font">Grade School Girls Softball</a></li>
+                            <li><a class="sport_font">Pee Wees</a></li>
+                            <li><a class="sport_font">Junior Fastpitch Softball</a></li>
+                            <li><a class="sport_font">Ponys</a></li>
+                            <li><a class="sport_font">Senior Fastpitch</a></li>
+                            <li><a class="sport_font">Colts</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sport_font">Flag Football</a>
+                        <ul>
+                            <li><a class="sport_font">Junior Division</a></li>
+                            <li><a class="sport_font">Senior Division</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sport_font">Player Registration</a></li>
+
+                    <!-- logged in pages -->
+                    <li><a class="sport_font">Roster</a></li>
+                    <li><a class="sport_font">Team</a>
+                        <ul>
+                            <li><a class="sport_font">Roster</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sport_font">My Profile</a></li>
+                    <li><a class="sport_font">Settings</a></li>
                 </ul>
             </nav>
 </header>
