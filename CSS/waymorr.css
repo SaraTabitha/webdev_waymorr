@@ -1,5 +1,5 @@
 #logo{
-    background-color: navy;
+    background-color: #182899;
     padding-left:10px;
     height:200px;
 }
@@ -31,4 +31,27 @@
 @font-face{
     font-family: NCAA Purdue Boilermakers;
     src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
+}
+
+body{
+    margin: 0;
+}
+
+nav > ul > li{
+    /* float:left; */
+    display: inline-block;
+    position: relative;
+    padding: 15px;
+}
+nav > ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: red;
+    background: white;
+    font-size: 18pt;
+}
+nav{
+    background: white;
+    height: 30px;
 }
