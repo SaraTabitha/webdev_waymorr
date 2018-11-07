@@ -9,7 +9,7 @@
                     <li><a class="sport_font">Home</a></li>
                     <li><a class="sport_font">About Us</a></li>
                     <li><a class="sport_font">Baseball</a>
-                        <ul>
+                        <ul id="baseballSubmenu">
                             <li><a class="sport_font">Tee-Ball</a></li>
                             <li><a class="sport_font">Peanuts</a></li>
                             <li><a class="sport_font">Grade School Girls Softball</a></li>
@@ -21,7 +21,7 @@
                         </ul>
                     </li>
                     <li><a class="sport_font">Flag Football</a>
-                        <ul>
+                        <ul id="flagFootballSubmenu">
                             <li><a class="sport_font">Junior Division</a></li>
                             <li><a class="sport_font">Senior Division</a></li>
                         </ul>
@@ -31,7 +31,7 @@
                     <!-- logged in pages -->
                     <li><a class="sport_font">Roster</a></li>
                     <li><a class="sport_font">Team</a>
-                        <ul>
+                        <ul id="teamSubmenu">
                             <li><a class="sport_font">Roster</a></li>
                         </ul>
                     </li>
