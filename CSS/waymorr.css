@@ -1,0 +1,34 @@
+#logo{
+    background-color: navy;
+    padding-left:10px;
+    height:200px;
+}
+#way_morr{
+    color: red;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    font-size: 64pt;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+}
+#youth_sports{
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: red;
+    font-size: 64pt;
+    margin: 0;
+    padding: 0;
+    padding-left:50px;
+    position: relative;
+    top:10px;
+    line-height:30px;
+    background-color:red;
+}
+.sport_font{
+    font-family: 'NCAA Purdue Boilermakers';
+}
+@font-face{
+    font-family: NCAA Purdue Boilermakers;
+    src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
+}
