@@ -83,6 +83,7 @@ nav > ul{
     font-size: 18pt;
     text-align: center;
 }
+
 nav{
     background: white;
     height: 30px;
@@ -124,4 +125,9 @@ footer > div > p > a{
 }
 .facebook:hover{
     color:red;
+}
+
+a{
+    color:red;
+    text-decoration:none;
 }

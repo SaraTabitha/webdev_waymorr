@@ -3,23 +3,24 @@
             <h1 id="way_morr" class="sport_font">WAY-MORR</h1>
             <h2 id="youth_sports" class="sport_font">YOUTH SPORTS</h2>
 
-            <a id="login" class="sport_font">Login</a>
+            <a id="login" class="sport_font" href="login.php">Login</a>
             </div>
 
             <nav>
                 <ul >
-                    <li><a class="sport_font">Home</a></li>
-                    <li><a class="sport_font">About Us</a></li>
+                    <li><a class="sport_font" href="home.php">Home</a></li>
+                    <li><a class="sport_font" href="about_us.php">About Us</a></li>
                     <li><a id="baseball" class="sport_font">Baseball</a>
                         <div id="baseball-submenu" class="submenu menu-invisible">
-                            <a class="sport_font">Tee-Ball</a>
-                            <a class="sport_font">Peanuts</a>
-                            <a class="sport_font">Grade School Girls Softball</a>
-                            <a class="sport_font">Pee Wees</a>
-                            <a class="sport_font">Junior Fastpitch Softball</a>
-                            <a class="sport_font">Ponys</a>
-                            <a class="sport_font">Senior Fastpitch</a>
-                            <a class="sport_font">Colts</a>
+                            <a class="sport_font" href="peanuts.php">Peanuts</a>
+                            <a class="sport_font" href="grade_school_girls_softball.php">Grade School Girls Softball</a>
+                            <a class="sport_font" href="pee_wees.php">Pee Wees</a>
+                            <a class="sport_font" href="junior_fastpitch_softball.php">Junior Fastpitch Softball</a>
+                            <a class="sport_font" href="tee_ball.php">Tee-Ball</a>
+                            <a class="sport_font" href="tee_ball.php">Tee-Ball</a>
+                            <a class="sport_font" href="ponys">Ponys</a>
+                            <a class="sport_font" href="senior_fastpitch.php">Senior Fastpitch</a>
+                            <a class="sport_font" href="colts">Colts</a>
                         </div>
                     </li>
                     <li><a id="flag-football" class="sport_font">Flag Football</a>
@@ -28,7 +29,7 @@
                             <a class="sport_font">Senior Division</a>
                         </div>
                     </li>
-                    <li><a class="sport_font">Player Registration</a></li>
+                    <li><a class="sport_font" href="player_registration.php">Player Registration</a></li>
 
                     <!-- logged in pages -->
                     <li><a id="team" class="sport_font">Team</a>
@@ -36,8 +37,8 @@
                             <a class="sport_font">Roster</a>
                         </div>
                     </li>
-                    <li><a class="sport_font">My Profile</a></li>
-                    <li><a class="sport_font">Settings</a></li>
+                    <li><a class="sport_font" href="my_profile.php">My Profile</a></li>
+                    <li><a class="sport_font" href="settings.php">Settings</a></li>
                 </ul>
             </nav>
 </header>
