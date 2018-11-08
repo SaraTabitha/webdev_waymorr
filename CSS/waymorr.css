@@ -33,6 +33,18 @@
     src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
 }
 
+#login{
+    position: absolute;
+    top:0;
+    right:0;
+    padding-right:25px;
+    padding-top:25px;
+    font-size: 18pt;
+    color:white;
+}
+#login:hover{
+    color:red;
+}
 body{
     /* header/footer go to edges */
     margin: 0;
