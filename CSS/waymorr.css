@@ -97,6 +97,19 @@ footer{
     width:100%;
 
     background-color: #182899;
-    border-top: solid 5px red;
+    border-top: solid 10px red;
+    padding-bottom: 15px;
 
+    color: white;
+    text-align:center;
+}
+footer > div > p > a{
+    color:white;
+}
+
+.facebook{
+    color:white;
+}
+.facebook:hover{
+    color:red;
 }
