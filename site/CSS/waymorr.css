@@ -62,6 +62,7 @@ nav > ul > li:hover, .submenu > a:hover{
     list-style: none;
     position: absolute;
     display: block;
+    background:white;
 } 
 .submenu > a {
     float: none;
