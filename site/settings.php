@@ -3,7 +3,7 @@
     <?php include_once 'PHP/head.php' ?>
     <body>
         <?php include_once "PHP/header.php" ?>
-        <p>settings</p>
+        <h1>Settings</h2>
         <?php include_once "PHP/footer.php" ?>
     </body>
 </html>

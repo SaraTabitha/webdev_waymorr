@@ -6,7 +6,7 @@
         <h1>Login / Registration</h1>
         <p> if login: </p>
         <form>
-        <label>Username:</label>
+        <label>E-mail:</label>
         <input type="text" />
         <label>Password:</label>
         <input type="text" />
@@ -21,7 +21,7 @@
         <label> Last name: </label>
         <input type="text" />
         <br>
-        <label> Username: </label>
+        <label> E-mail: </label>
         <input type="text" />
         <br>
         <label>Password:</label>
