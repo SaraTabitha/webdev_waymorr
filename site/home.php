@@ -4,7 +4,7 @@
     <body>
         <?php include_once "PHP/header.php" ?>
 
-        <p>home</p>
+        <h1>News/Updates</h1>
         <?php include_once "PHP/footer.php" ?>
     </body>
 </html>
