@@ -42,11 +42,27 @@ nav > ul > li{
     position: relative;
     padding: 15px;
 }
-nav > ul > li:hover{
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: red; */
-    /* color: white; */
+nav > ul > li:hover, .submenu > a:hover{
     text-decoration: underline;
+}
+/* nav>ul>li:hover .submenu{
+    display: block;
+}*/
+.submenu{
+    list-style: none;
+    position: absolute;
+    display: block;
+} 
+.submenu > a {
+    float: none;
+    display:block;
+    text-align: left;
+}
+#baseball-submenu{
+    width: 300px;
+}
+#flag-football-submenu{
+    width: 200px;
 }
 nav > ul{
     padding: 0;
@@ -60,4 +76,8 @@ nav > ul{
 nav{
     background: white;
     height: 30px;
+}
+
+.menu-invisible{
+    display: none;
 }
