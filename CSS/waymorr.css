@@ -34,6 +34,7 @@
 }
 
 body{
+    /* header/footer go to edges */
     margin: 0;
 }
 
@@ -45,9 +46,6 @@ nav > ul > li{
 nav > ul > li:hover, .submenu > a:hover{
     text-decoration: underline;
 }
-/* nav>ul>li:hover .submenu{
-    display: block;
-}*/
 .submenu{
     list-style: none;
     position: absolute;
@@ -82,7 +80,7 @@ nav{
     display: none;
 }
 
-
+/* mobile logo styling */
 @media screen and (max-width:552px){
     #youth_sports{
         line-height: 80px;
@@ -90,4 +88,15 @@ nav{
     #logo{
         height: 300px;
     }
+}
+
+footer{
+    /* stick footer to bottom */
+    position: absolute;
+    bottom: 0;
+    width:100%;
+
+    background-color: #182899;
+    border-top: solid 5px red;
+
 }
