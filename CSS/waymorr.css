@@ -81,3 +81,13 @@ nav{
 .menu-invisible{
     display: none;
 }
+
+
+@media screen and (max-width:552px){
+    #youth_sports{
+        line-height: 80px;
+    }
+    #logo{
+        height: 300px;
+    }
+}
