@@ -1,3 +1,5 @@
+</div>
+<!-- end of content div -->
 <footer>
     <div>
         <p>
