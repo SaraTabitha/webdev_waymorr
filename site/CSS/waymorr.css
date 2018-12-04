@@ -80,6 +80,9 @@ nav > ul > li:hover, .submenu > a:hover{
 #flag-football-submenu{
     width: 200px;
 }
+#team-submenu{
+    width: 150px;
+}
 nav > ul{
     padding: 0;
     margin: 0;

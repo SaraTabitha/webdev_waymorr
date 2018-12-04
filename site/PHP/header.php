@@ -33,6 +33,7 @@
                     <li><a id="team" class="sport_font">Team</a>
                         <div id="team-submenu" class="submenu   menu-invisible">
                             <a class="sport_font" href="roster.php">Roster</a>
+                            <a class="sport_font" href="team_schedule.php">Team Schedule</a>
                         </div>
                     </li>
                     <li><a class="sport_font" href="my_profile.php">My Profile</a></li>
