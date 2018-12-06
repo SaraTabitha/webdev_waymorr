@@ -4,18 +4,23 @@
     <body>
         <?php include_once "PHP/header.php" ?>
         <h1>Registration</h1>
-		<a href="registration.php"> Login </a>
-        
+        <a href="login.php"> Login </a>
         <form>
-        <label>E-mail:</label>
+        <label> First name: </label>
         <input type="text" />
+        <label> Last name: </label>
+        <input type="text" />
+        <br>
+        <label> E-mail: </label>
+        <input type="text" />
+        <br>
         <label>Password:</label>
+        <input type="text" />
+        <label>Retype Password:</label>
         <input type="text" />
         <br>
         <input type="submit" />
         </form>
-
-        
         <?php include_once "PHP/footer.php" ?>
     </body>
 </html>
