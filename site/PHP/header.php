@@ -2,8 +2,19 @@
             <div id="logo">
             <h1 id="way_morr" class="sport_font">WAY-MORR</h1>
             <h2 id="youth_sports" class="sport_font">YOUTH SPORTS</h2>
-
-            <a id="login" class="sport_font" href="login.php">Login</a>
+            <?php
+            if(isset($_SESSION['username'])){
+                //if user is logged in
+                ?>
+                <a id="logout" class="sport_font" href="logout.php">Login</a> 
+                <?php
+            }
+            else{
+                ?>
+                 <a id="login" class="sport_font" href="login.php">Login</a> 
+                <?php
+            }
+            ?>
             </div>
 
             <nav>

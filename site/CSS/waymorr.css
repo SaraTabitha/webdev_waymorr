@@ -41,7 +41,7 @@ html, body{
     src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
 }
 
-#login{
+#login, #logout{
     position: absolute;
     top:0;
     right:0;
@@ -50,9 +50,10 @@ html, body{
     font-size: 18pt;
     color:white;
 }
-#login:hover{
+#login:hover, #logout:hover{
     color:red;
 }
+
 
 
 nav > ul > li{
