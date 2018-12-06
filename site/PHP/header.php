@@ -169,40 +169,7 @@
 			?>
 
 
-			<nav id="menu">
-					<ul >
-						<li><a class="sport_font" href="home.php">Home</a></li>
-						<li><a class="sport_font" href="about_us.php">About Us</a></li>
-						<li><a id="baseball" class="sport_font">Baseball</a>
-							<div id="baseball-submenu" class="submenu menu-invisible">
-								<a class="sport_font" href="peanuts.php">Peanuts</a>
-								<a class="sport_font" href="grade_school_girls_softball.php">Grade School Girls Softball</a>
-								<a class="sport_font" href="pee_wees.php">Pee Wees</a>
-								<a class="sport_font" href="junior_fastpitch_softball.php">Junior Fastpitch Softball</a>
-								<a class="sport_font" href="ponys.php">Ponys</a>
-								<a class="sport_font" href="senior_fastpitch.php">Senior Fastpitch</a>
-								<a class="sport_font" href="colts.php">Colts</a>
-							</div>
-						</li>
-						<li><a id="flag-football" class="sport_font">Flag Football</a>
-							<div id="flag-football-submenu" class="submenu menu-invisible">
-								<a class="sport_font" href="junior_division.php">Junior Division</a>
-								<a class="sport_font" href="senior_division.php">Senior Division</a>
-							</div>
-						</li>
-						<li><a class="sport_font" href="player_registration.php">Player Registration</a></li>
-
-						<!-- logged in pages -->
-						<li><a id="team" class="sport_font">Team</a>
-							<div id="team-submenu" class="submenu   menu-invisible">
-								<a class="sport_font" href="roster.php">Roster</a>
-								<a class="sport_font" href="team_schedule.php">Team Schedule</a>
-							</div>
-						</li>
-						<li><a class="sport_font" href="my_profile.php">My Profile</a></li>
-						<li><a class="sport_font" href="settings.php">Settings</a></li>
-					</ul>
-				</nav>
+			
             
 </header>
 <div id="content">
