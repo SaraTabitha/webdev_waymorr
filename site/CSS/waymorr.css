@@ -5,7 +5,9 @@ html, body{
     margin: 0;
     min-height: 100vh;
 }
-
+#menu{
+    height: 59px;
+}
 #logo{
     background-color: #182899;
     padding-left:10px;
@@ -104,12 +106,20 @@ nav{
 }
 
 /* mobile logo styling */
+@media screen and (max-width:1055px) {
+    #menu{
+        height: 118px;
+    }
+}
 @media screen and (max-width:552px){
     #youth_sports{
         line-height: 80px;
     }
     #logo{
         height: 300px;
+    }
+    #menu{
+        height:177px;
     }
 }
 #content{
