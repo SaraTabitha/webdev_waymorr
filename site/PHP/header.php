@@ -30,6 +30,7 @@
 			}
 			else{
 			//if the user is a user/not an admin or coach; or if neither are set (visitor)
+			
 			?>
 				<nav id="menu">
 					<ul >
@@ -65,9 +66,9 @@
 						<li><a class="sport_font" href="settings.php">Settings</a></li>
 					</ul>
 				</nav>
-			<?
+			<?php
 
-			}
+			}//end of else
 			?>
 
 
@@ -108,4 +109,3 @@
             
 </header>
 <div id="content">
-
