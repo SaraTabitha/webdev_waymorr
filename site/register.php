@@ -4,7 +4,7 @@
     <body>
         <?php include_once "PHP/header.php" ?>
         <h1>Registration</h1>
-        <a href="login.php"> Login </a>
+        <a href="login.php"> Go to Login </a>
         <form>
         <label> First name: </label>
         <input type="text" />

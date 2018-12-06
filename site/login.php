@@ -3,8 +3,8 @@
     <?php include_once 'PHP/head.php' ?>
     <body>
         <?php include_once "PHP/header.php" ?>
-        <h1>Registration</h1>
-		<a href="registration.php"> Login </a>
+        <h1>Login</h1>
+		<a href="register.php"> Go to Registration </a>
         
         <form>
         <label>E-mail:</label>
