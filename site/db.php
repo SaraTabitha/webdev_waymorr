@@ -50,4 +50,5 @@
 		header("Location: $url");
 		die;
 	}
+
 ?>
