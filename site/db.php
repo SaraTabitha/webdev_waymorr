@@ -31,7 +31,7 @@
 		if($rows) {
 			foreach($rows as $row) {
 				$correct_pwrd = $row["PHash"];
-				return strcmp($correct_pwrd, crypt($password, $correct_pwrd));
+				return strcmp($correct_pwrd, crypt($password, $email));
 			}
 		} else {
 			return FALSE;
