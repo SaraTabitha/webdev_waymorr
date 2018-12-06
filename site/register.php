@@ -13,12 +13,12 @@
 			  $retypePassword = $_POST["retypePassword"];
 			  $firstName = $_POST["firstName"];
 			  $lastName = $_POST["lastName"];
-			  $firstName2 = $_POST["fistName2"];
+			  $firstName2 = $_POST["firstName2"];
 			  $lastName2 = $_POST["lastName2"];
 			  $phone = $_POST["phone"];
 			  $phone2 = $_POST["phone2"];
 			  $address = $_POST["mailingAddress"];
-			  $address2 = $_POST["mailingAddress2"];
+			  $email2 = $_POST["email2"];
 
 			  //TODO verify required fields
 
@@ -28,7 +28,7 @@
 
 			  //TODO verify phone numbers
 
-			  
+			  register_user($email, crypt($password, $email), $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
 			}
 		?>
         <h1>Registration</h1>
@@ -66,9 +66,6 @@
             </br>
             <label>E-mail:</label>
             <input type="text" name="email2"/>
-            </br>
-            <label>Mailing Address:</label>
-            <input type="text" name="mailingAddress2" />
             </br>
             </br>
         <input type="submit" />

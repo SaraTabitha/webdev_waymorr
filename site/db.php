@@ -52,4 +52,43 @@
 		die;
 	}
 
+	function register_user($email, $pwdHash, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2) {
+		global $db;
+		$email = $db->quote($email);
+		$firstName = $db->quote($firstName);
+		$lastName = $db->quote($lastName);
+		$phone = $db->quote($phone);
+		$address = $db->quote($address);
+		if($firstName2 != "") {
+			$firstName2 = $db->quote($firstName2);
+			$lastName2 = $db->quote($lastName2);
+			if($phone2 != "") {
+				$phone2 = $db->quote($phone2);
+			} else {
+				$phone2 = NULL;
+			} if($email2 != "") {
+				$email2 = $db->quote($email2);
+			} else {
+				$email2 = NULL;
+			}
+		} else {
+			$firstName2 = NULL;
+			$lastName2 = NULL;
+			$phone2 = NULL;
+			$address2 = NULL;
+		}
+		echo $email;
+		echo $firstName;
+		echo $lastName;
+		echo $pwdHash;
+		echo $phone;
+		echo $address;
+		echo $firstName2;
+		echo $lastName2;
+		echo $phone2;
+		echo $email2;
+		//$result = $db->query("INSERT INTO `User`(`FirstName`, `LastName`, `Email`, `PhoneNumber`, `PHash`, `FirstName2`, `LastName2`, `Email2`, `Phone2`, `IsAdmin`, `IsCoach`) VALUES ('test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test')");
+		$result = $db->query("INSERT INTO User (FirstName, LastName, Email, PhoneNumber, PHash, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach) VALUES ($firstName, $lastName, $email, $phone, $pwdHash, $firstName2, $lastName2, $email2, $phone2, FALSE, FALSE)");
+	}
+
 ?>
