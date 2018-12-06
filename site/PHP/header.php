@@ -3,6 +3,8 @@
             <h1 id="way_morr" class="sport_font">WAY-MORR</h1>
             <h2 id="youth_sports" class="sport_font">YOUTH SPORTS</h2>
             <?php
+			 
+			include_once("db.php");
             if(isset($_SESSION['username'])){
                 //if user is logged in
                 ?>
@@ -16,8 +18,10 @@
             }
             ?>
             </div>
+			<?php
 
-            <nav>
+			?>
+            <nav id="menu">
                 <ul >
                     <li><a class="sport_font" href="home.php">Home</a></li>
                     <li><a class="sport_font" href="about_us.php">About Us</a></li>

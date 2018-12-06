@@ -13,6 +13,8 @@
 		return $dbh;
 	}
 
+	$db = db_connect();
+
 	//Disconnects from the database
 	function db_disconnect() {
 		global $db;
@@ -21,7 +23,6 @@
 		}
 	}
 
-	$db = $db_connect();
 
 	function is_password_correct($email, $password) {
 		global $db;
