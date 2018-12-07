@@ -27,8 +27,8 @@
 			  //TODO verify password (matches and fulfills requirements)
 
 			  //TODO verify phone numbers
-
-			  register_user($email, crypt($password, $email), $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
+              
+			  register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
 			}
 		?>
         <h1>Registration</h1>

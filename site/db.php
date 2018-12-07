@@ -26,12 +26,17 @@
 
 	function is_password_correct($email, $password) {
 		global $db;
-		$email = $db->quote($email);
-		$password = $db->quote($password);
-		$rows = $db->query("SELECT PHash FROM User WHERE Email = $email");
+		$pdo= $db;
+		$sql = "SELECT PHash FROM User WHERE Email LIKE :email";
+		$statement = $pdo->prepare($sql);
+		$statement->bindParam("email", $email);
+		$statement->execute();
+		$rows = $statement->fetchAll();
+		
 		if($rows) {
 			foreach($rows as $row) {
 				$correct_pwrd = $row["PHash"];
+				
 				if(strcmp($correct_pwrd, crypt($password, $email)) == 0) {
 					return true;
 				} else {
@@ -41,6 +46,8 @@
 		} else {
 			return false;
 		}
+
+		
 	}
 
 	function ensure_logged_in() {
@@ -57,14 +64,10 @@
 		die;
 	}
 
-	function register_user($email, $pwdHash, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2) {
+	function register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2) {
 		global $db;
-		$email = $db->quote($email);
-		$firstName = $db->quote($firstName);
-		$lastName = $db->quote($lastName);
-		$phone = $db->quote($phone);
-		$address = $db->quote($address);
-		$pwdHash = $db->quote($pwdHash);
+		$pwdHash = crypt($password, $email);
+
 		if($firstName2 != "") {
 			$firstName2 = $db->quote($firstName2);
 			$lastName2 = $db->quote($lastName2);
@@ -83,7 +86,13 @@
 			$phone2 = NULL;
 			$address2 = NULL;
 		}
-		$result = $db->query("INSERT INTO User (FirstName, LastName, Email, PhoneNumber, PHash, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach) VALUES ($firstName, $lastName, $email, $phone, $pwdHash, $firstName2, $lastName2, $email2, $phone2, FALSE, FALSE)");
+
+		$pdo = $db;
+		$sql = "INSERT INTO User (FirstName, LastName, Email, PhoneNumber, PHash, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$statement = $pdo->prepare($sql);
+		$params  = [$firstName, $lastName, $email, $phone, $pwdHash, $firstName2, $lastName2, $email2, $phone2, FALSE, FALSE];
+		$statement->execute($params);
+		
 		echo "Success";
 	}
 

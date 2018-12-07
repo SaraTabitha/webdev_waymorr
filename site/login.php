@@ -7,10 +7,13 @@
 			if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$email = $_POST["email"];
 				$pwd = $_POST["password"];
-				echo is_password_correct($email, $pwd);
+				//echo is_password_correct($email, $pwd);
 				if(is_password_correct($email, $pwd)) {
 					//TODO Set Session variables
-					redirect("home.php");
+					//redirect("home.php");
+					?>
+					<p><?php echo "Successfully logged in!" ?></p>
+					<?php
 				} else {?>
 					<p>Failed</p>
 				<?php }
