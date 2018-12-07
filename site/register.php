@@ -4,7 +4,7 @@
     <body>
         <?php include_once "PHP/header.php" ?>
 		<?php
-			include("db.php");
+			include_once("db.php");
 
 			if($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -38,9 +38,9 @@
         <input type="text" name="email" />
         <br>
         <label>Password:</label>
-        <input type="text" name="password" />
+        <input type="password" name="password" />
         <label>Retype Password:</label>
-        <input type="text" name="retypePassword" />
+        <input type="password" name="retypePassword" />
         <br>
 		<!-- required -->
             <label>First Name:</label>

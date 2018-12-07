@@ -27,14 +27,19 @@
 	function is_password_correct($email, $password) {
 		global $db;
 		$email = $db->quote($email);
-		$rows = $db->query("SELECT PHash FROM Users WHERE Email = $email");
+		$password = $db->quote($password);
+		$rows = $db->query("SELECT PHash FROM User WHERE Email = $email");
 		if($rows) {
 			foreach($rows as $row) {
 				$correct_pwrd = $row["PHash"];
-				return strcmp($correct_pwrd, crypt($password, $email));
+				if(strcmp($correct_pwrd, crypt($password, $email)) == 0) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		} else {
-			return FALSE;
+			return false;
 		}
 	}
 
@@ -59,6 +64,7 @@
 		$lastName = $db->quote($lastName);
 		$phone = $db->quote($phone);
 		$address = $db->quote($address);
+		$pwdHash = $db->quote($pwdHash);
 		if($firstName2 != "") {
 			$firstName2 = $db->quote($firstName2);
 			$lastName2 = $db->quote($lastName2);
@@ -77,18 +83,8 @@
 			$phone2 = NULL;
 			$address2 = NULL;
 		}
-		echo $email;
-		echo $firstName;
-		echo $lastName;
-		echo $pwdHash;
-		echo $phone;
-		echo $address;
-		echo $firstName2;
-		echo $lastName2;
-		echo $phone2;
-		echo $email2;
-		//$result = $db->query("INSERT INTO `User`(`FirstName`, `LastName`, `Email`, `PhoneNumber`, `PHash`, `FirstName2`, `LastName2`, `Email2`, `Phone2`, `IsAdmin`, `IsCoach`) VALUES ('test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test')");
 		$result = $db->query("INSERT INTO User (FirstName, LastName, Email, PhoneNumber, PHash, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach) VALUES ($firstName, $lastName, $email, $phone, $pwdHash, $firstName2, $lastName2, $email2, $phone2, FALSE, FALSE)");
+		echo "Success";
 	}
 
 ?>
