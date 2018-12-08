@@ -128,9 +128,13 @@ nav{
     #menu{
         height:177px;
     }
+    
 }
+
 #content{
     min-height: calc(100vh - 395px);
+    margin: 0 auto;
+    width: calc(100vw - 200px);
 }
 footer{
     height:140px;
@@ -145,6 +149,7 @@ footer{
 
     color: white;
     text-align:center;
+    margin-top: 40px;
 }
 footer > div > p > a{
     color:white;
