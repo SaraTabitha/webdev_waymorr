@@ -65,7 +65,7 @@
                     <br>
                     <label for="pass"><strong>Password: </strong></label><input name="pass" type="password">
                     <br>
-                    <button type="submit">Edit Contact Info</button>
+                    <input type="submit" value="Edit Contact Info" />
                 </form>
                 <h2>Registered Players</h2>
                 <p>players...</p>

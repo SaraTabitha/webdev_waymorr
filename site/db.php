@@ -214,6 +214,53 @@
 		}
 	}
 
+	function get_team_schedule(){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `ScheduledGame`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+	function get_team_from_teamid($team_id){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `Name` FROM `Team` WHERE `Id` LIKE :teamid";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("teamid", $team_id);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				foreach($result as $row){
+					return $row['Name'];
+				}
+			}
+			else{
+				return false;
+			}
+			
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
 	function assign_team($age, $gender, $sport) {
 		global $db;
 		try{

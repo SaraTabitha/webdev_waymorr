@@ -63,6 +63,21 @@ h1 {
     color:red;
 }
 
+input[type="submit"] {
+    border: 1px solid navy;
+    background: #2739b4;
+    color: white;
+    height: 30px;
+    font-family: 'NCAA Purdue Boilermakers';
+    width: 150px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+input[type="submit"]:hover {
+        color: red;
+        background: white;
+}
 
 
 nav > ul > li{
@@ -70,19 +85,31 @@ nav > ul > li{
     position: relative;
     padding: 15px;
 }
-nav > ul > li:hover, .submenu > a:hover{
-    text-decoration: underline;
+.submenu > a:hover {
+    background: #ff4545;
+    color: white;
+    padding: 4px;
 }
+nav > ul > li:hover, .submenu > a:hover {
+    text-decoration: underline;
+    
+}
+
 .submenu{
     list-style: none;
     position: absolute;
     display: block;
     background:white;
+
+    padding: 6px;
+    border: 1px dashed red;
 } 
+
 .submenu > a {
     float: none;
     display:block;
     text-align: left;
+
 }
 #baseball-submenu{
     width: 300px;
@@ -165,4 +192,12 @@ footer > div > p > a{
 a{
     color:red;
     text-decoration:none;
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 10px;
 }
