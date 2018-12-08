@@ -475,7 +475,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT * FROM `News`";
+			$sql = "SELECT * FROM `News` ORDER BY `Date` DESC"; //news will appear from most recent date to least recent
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
