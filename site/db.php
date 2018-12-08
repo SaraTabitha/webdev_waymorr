@@ -214,4 +214,51 @@
 		}
 	}
 
+	function assign_team($age, $gender, $sport) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT Team.Id AS TeamId, TeamType.Name, Season.Id AS SeasonId FROM `Team` INNER JOIN Season ON Season.Id = Team.SeasonId INNER JOIN TeamType ON TeamType.Id = Team.TeamType WHERE (TeamType.Gender = :gender OR TeamType.Gender = 3) AND :age BETWEEN TeamType.LowerAge AND TeamType.UpperAge AND Season.IsCurrent = 1 AND TeamType.Sport = :sport";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("age", $age);
+			$statement->bindParam("gender", $gender);
+			$statement->bindParam("sport", $sport);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result) {
+				foreach($result as $row) {
+					return $row;
+				}
+			} else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
+	function register_player($firstName, $lastName, $age, $teamId, $gender, $birthdate, $userId, $seasonId, $shirtSize) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "INSERT INTO Player (FirstName, LastName, Age, TeamId, Gender, BirthDate, UserId, SeasonId, ShirtSize) VALUES (:firstName, :lastName, :age, :teamId, :gender, :birthdate, :userId, :seasonId, :shirtSize)";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("firstName", $firstName);
+			$statement->bindParam("lastName", $lastName);
+			$statement->bindParam("age", $age);
+			$statement->bindParam("teamId", $teamId);
+			$statement->bindParam("gender", $gender);
+			$statement->bindParam("birthdate", $birthdate);
+			$statement->bindParam("userId", $userId);
+			$statement->bindParam("seasonId", $seasonId);
+			$statement->bindParam("shirtSize", $shirtSize);
+			$statement->execute();
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
 ?>
