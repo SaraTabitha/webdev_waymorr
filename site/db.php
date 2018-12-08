@@ -472,4 +472,31 @@
 		}
 	}
 
+	function delete_player($playerId) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "DELETE FROM Player WHERE Id = :playerId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("playerId", $playerId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to delete player: " . $e->getMessage();
+		}
+	}
+
+	function update_players_team($playerId, $newTeamId) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "UPDATE Player SET (TeamId = :newTeamId) WHERE Id = :playerId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("playerId", $playerId);
+			$statement->bindParam("newTeamId", $newTeamId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
+		}
+	}
+
 ?>

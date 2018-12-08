@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <?php include_once 'PHP/head.php' ?>
     <body>
         <?php include_once "PHP/header.php"; ?>
@@ -7,7 +8,7 @@
 			include_once 'db.php';
 			$currentPlayers = get_current_players();
 		?>
-		<table>
+		<table id="playerTable">
 			<thead>
 				<tr>
 					<th class="hidden">Id</th>
@@ -36,10 +37,10 @@
 					<td><?php echo $player['ShirtSize']; ?></td>
 					<td><?php echo $player['Name']; ?></td>
 					<td>
-						<button>Edit Team</button>
+						<button class="editButton">Edit Team</button>
 					</td>
 					<td>
-						<button>Delete Player</button>
+						<button class="deleteButton">Delete Player</button>
 					</td>
 				</tr>
 			<?php } ?>
