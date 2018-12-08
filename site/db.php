@@ -308,4 +308,46 @@
 		}
 	}
 
+	function get_all_users() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT FirstName, LastName, Email, Phone, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get users: " . $e->getMessage();
+		}
+	}
+
+	function get_current_players() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT FirstName, LastName, Age, Gender, ShirtSize, Team.TeamName FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
+
+	function get_current_teams() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT Name, User.FirstName, User.LastName, CoachId FROM Team INNER JOIN User ON User.Id = Team.CoachId INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get teams: " . $e->getMessage();
+		}
+	}
+
 ?>
