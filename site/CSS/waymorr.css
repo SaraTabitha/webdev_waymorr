@@ -70,19 +70,31 @@ nav > ul > li{
     position: relative;
     padding: 15px;
 }
-nav > ul > li:hover, .submenu > a:hover{
-    text-decoration: underline;
+.submenu > a:hover {
+    background: #ff4545;
+    color: white;
+    padding: 4px;
 }
+nav > ul > li:hover, .submenu > a:hover {
+    text-decoration: underline;
+    
+}
+
 .submenu{
     list-style: none;
     position: absolute;
     display: block;
     background:white;
+
+    padding: 6px;
+    border: 1px dashed red;
 } 
+
 .submenu > a {
     float: none;
     display:block;
     text-align: left;
+
 }
 #baseball-submenu{
     width: 300px;
