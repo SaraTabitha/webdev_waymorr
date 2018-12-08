@@ -12,6 +12,28 @@
 			<?php
 				if(isset($_SESSION['isCoach']) && ($_SESSION['isCoach'] === true)){
 				//coach
+
+				/*
+				* Handle Add Team Form Submission
+				*/
+				if($_SERVER["REQUEST_METHOD"] == "POST"){
+					$team = $_POST["team"];
+					$opponent = $_POST["opponent"];
+					$isHome = $_POST["isHome"];
+					$date = $_POST["date"];
+					$time = $_POST["time"];
+
+					?>
+					<p><?= $team ?></p>
+					<p><?= $opponent ?></p>
+					<p><?= $isHome ?></p>
+					<p><?= $date ?></p>
+					<p><?= $time ?></p>
+					
+					<?php
+					add_scheduled_game($team, $opponent, $isHome, $date, $time);
+				}
+				
 				?>
 					<?php 
 						function team_dropdown($dropdown_name, $selected){
@@ -135,6 +157,7 @@
 
 					 
 					 <h2>Add</h2>
+					 <form method="POST" action="team_schedule.php">
 					 <table>
 						<tr>
 							<th>Team</th>
@@ -160,7 +183,7 @@
 							</select>
 							</td>
 							<td>
-								<input type="text" name="oppponent" value=""/>
+								<input type="text" name="opponent" value=""/>
 							</td>
 							<td>
 								<select name="isHome">
@@ -180,6 +203,7 @@
 
 						</tr>
 					 </table>
+					 </form>
 					 
 				<?php
 				}
