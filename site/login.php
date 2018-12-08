@@ -3,8 +3,9 @@
     <?php include_once 'PHP/head.php' ?>
 	<?php
 			include_once("db.php");
-
+			$error= "";
 			if($_SERVER["REQUEST_METHOD"] == "POST") {
+				$error = "";
 				$email = $_POST["email"];
 				$pwd = $_POST["password"];
 				//echo is_password_correct($email, $pwd);
@@ -35,14 +36,16 @@
 					?>
 					<p><?php echo "Successfully logged in!" ?></p>
 					<?php
-				} else {?>
-					<p>Failed</p>
-				<?php }
+				} else {
+					$error = "Email or password is incorrect";
+				}
 			}
 		?>
     <body>
         <?php include_once "PHP/header.php" ?>
         <h1>Login</h1>
+		<p class="error"><?php echo $error;?></p>
+
 		<a href="register.php"> Go to Registration </a>
         
         <form method="post" action="login.php">

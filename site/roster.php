@@ -7,10 +7,10 @@
 			include_once 'db.php';
 			$currentPlayers = get_current_players();
 		?>
-        <p>roster</p>
 		<table>
 			<thead>
 				<tr>
+					<th class="hidden">Id</th>
 					<th>Last Name</th>
 					<th>First Name</th>
 					<th>Age</th>
@@ -23,6 +23,7 @@
 			</thead>
 			<?php foreach($currentPlayers as $player) { ?>
 				<tr>
+					<td class="hidden idColumn"><?php echo $player['Id']; ?></th>
 					<td><?php echo $player['LastName']; ?></td>
 					<td><?php echo $player['FirstName']; ?></td>
 					<td><?php echo $player['Age']; ?></td>
