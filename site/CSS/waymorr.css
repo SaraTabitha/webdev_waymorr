@@ -35,8 +35,15 @@ html, body{
     line-height:30px;
     background-color:red;
 }
-.sport_font{
+.sport_font, h1{
     font-family: 'NCAA Purdue Boilermakers';
+}
+h1 {
+    color: white;
+    font-size: 48px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #182899;
+    text-shadow: 2px 4px navy;
 }
 @font-face{
     font-family: NCAA Purdue Boilermakers;
