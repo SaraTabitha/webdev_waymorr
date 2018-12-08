@@ -4,6 +4,7 @@
     <body>
         <?php include_once "PHP/header.php" ?>
 		<h1>Welcome</h1>
+		<span id="urgentMessage"></span>
 		<?php 
 			require_once("db.php");
 			$news = get_all_news();

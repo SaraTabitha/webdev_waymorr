@@ -512,5 +512,19 @@
 			echo "Failed to update player: " . $e->getMessage();
 		}
 	}
+	function get_urgent(){
+	global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `Urgent`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
 
 ?>

@@ -49,7 +49,10 @@ h1 {
     font-family: NCAA Purdue Boilermakers;
     src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
 }
-
+#urgentMessage {
+    background-color:red;
+    color: black;
+}
 #login, #logout{
     position: absolute;
     top:0;
