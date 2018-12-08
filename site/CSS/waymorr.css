@@ -63,7 +63,7 @@ h1 {
     color:red;
 }
 
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
     border: 1px solid navy;
     background: #2739b4;
     color: white;
@@ -74,7 +74,10 @@ input[type="submit"] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-input[type="submit"]:hover {
+input[type="button"] {
+    width: 100px;
+}
+input[type="submit"]:hover, input[type="button"]:hover {
         color: red;
         background: white;
 }

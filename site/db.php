@@ -418,6 +418,44 @@
 		}
 	
 	}
+	function update_scheduled_game($id, $team_name, $opponent, $isHome, $date, $time){
+		global $db;
+		$team_id = get_teamid_from_teamName($team_name); //grabs id # 
+	
+		try{
+			$pdo = $db;
+			
+			$sql = "UPDATE `ScheduledGame` SET `TeamId`= :team_id,`Opponent`= :opponent,`IsHomeGame`= :isHome,`Date`= :date,`Time`= :time WHERE `Id` LIKE :id";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("id", $id);
+			$statement->bindParam("team_id", $team_id);
+			$statement->bindParam("opponent", $opponent);
+			$statement->bindParam("isHome", $isHome);
+			$statement->bindParam("date", $date);
+			$statement->bindParam("time", $time);
+			$statement->execute();
+
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
+	function delete_scheduled_game($id){
+		global $db;
+		try{
+			$pdo = $db;
+			
+			$sql = "DELETE FROM `ScheduledGame` WHERE `Id` LIKE :id";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("id", $id);
+			$statement->execute();
+
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
 
 	function get_all_players_for_user($userId) {
 		global $db;
