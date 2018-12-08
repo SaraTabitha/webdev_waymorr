@@ -6,6 +6,20 @@
     <?php
         require_once("db.php");
         if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true){
+
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                        $id = $_POST['news'];
+					    $action = $_POST["action"];
+
+                        if($action === 'update'){
+                            //TODO load selected news item for the admin to edit it
+                            redirect("edit_home.php");
+                        }
+                        else if($action === 'delete'){
+                            delete_news($id);
+                            redirect("edit_home.php");
+                        }
+            }   
     
             ?>
             <h1>Edit Home </h1>
@@ -20,10 +34,10 @@
                     }
                    ?>
                  <input name="id" type="hidden" value="<?= $id ?>"/>
-                <label for="message">Message</label>
+                <label for="message"><strong>Message: </strong></label>
                 <input name="message" type="text" value="<?= $message ?>"/>
                 <br>
-                <label for="active">Active</label>
+                <label for="active"><strong>Active: </strong></label>
                 <select name="active">
                     <option value="1" 
                      <?PHP if($active === '1'){ echo 'selected';} ?>
@@ -37,8 +51,28 @@
             </form>
             <br>
             <br>
-            <h3>Update News </h3>
-            
+            <h3>Update News</h3>
+            <form method="POST" action="edit_home.php">
+                <label for="title"><strong>Select: </strong></label>
+                <select name="news">
+                <?php 
+                    $arr = get_all_news();
+                    foreach($arr as $row){
+                        $id = $row['Id'];
+                        $title = $row['Title'];
+                        ?>
+                        <option value="<?= $id ?>"><?= $title ?></option>
+                        <?php
+                    }
+                ?>
+                </select>
+                <label for="action"><strong>Action:</strong></label>
+                <select name="action">
+                    <option value="update">Edit</option>
+                    <option value="delete">Delete</option>
+                <select>
+                <input type="submit" value="Submit"/>
+            </form>
             <?php
 
             
