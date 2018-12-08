@@ -374,7 +374,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT FirstName, LastName, Age, Gender, ShirtSize, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1";
+			$sql = "SELECT Player.Id, FirstName, LastName, Age, Gender, ShirtSize, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1 ORDER BY Player.Age ASC";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -483,6 +483,33 @@
 
 		} catch(PDOException $e) {
 			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
+
+	function delete_player($playerId) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "DELETE FROM Player WHERE Id = :playerId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("playerId", $playerId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to delete player: " . $e->getMessage();
+		}
+	}
+
+	function update_players_team($playerId, $newTeamId) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "UPDATE Player SET (TeamId = :newTeamId) WHERE Id = :playerId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("playerId", $playerId);
+			$statement->bindParam("newTeamId", $newTeamId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
 		}
 	}
 
