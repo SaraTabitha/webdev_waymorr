@@ -471,5 +471,19 @@
 			echo "Failed to get players: " . $e->getMessage();
 		}
 	}
+	function get_all_news(){
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `News`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
 
 ?>
