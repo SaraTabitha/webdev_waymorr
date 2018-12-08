@@ -388,7 +388,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Name, User.FirstName, User.LastName, CoachId FROM Team INNER JOIN User ON User.Id = Team.CoachId INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$sql = "SELECT Name, User.FirstName, User.LastName FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -585,7 +585,7 @@
 			try {
 				$name = $year . " " . $teamType['Name'];
 				$pdo = $db;
-				$sql = "INSERT INTO Team (Name, SeasonId, CoachId, TeamType) VALUES (:name, (SELECT Id FROM Season WHERE IsCurrent = 1), 0, :teamType)";
+				$sql = "INSERT INTO Team (Name, SeasonId, TeamType) VALUES (:name, (SELECT Id FROM Season WHERE IsCurrent = 1), :teamType)";
 				$statement = $pdo->prepare($sql);
 				$statement->bindParam("name", $name);
 				$statement->bindParam(":teamType", $teamType['Id']);
