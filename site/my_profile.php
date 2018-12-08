@@ -92,7 +92,7 @@
 						</tr>
 					<?php }
 					} else { ?>
-						<td colspan=3>You currently have no players registered</td>
+						<td colspan=3>You currently have no players registered for this season</td>
 					<?php }?>
 				</table>
 				<?php
