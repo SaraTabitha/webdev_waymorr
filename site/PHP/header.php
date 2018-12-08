@@ -54,7 +54,13 @@
 							</div>
 						</li>
 						<li><a class="sport_font" href="my_profile.php">My Profile</a></li>
-						<li><a class="sport_font" href="settings.php">Settings</a></li>
+						<li><a id="settings" class="sport_font">Settings</a>
+							<div id="settings-submenu" class="submenu   menu-invisible">
+								<a class="sport_font" href="edit_home.php">Edit Home</a>
+								<a class="sport_font" href="permission_control.php">Permission Control</a>
+								<a class="sport_font" href="seasons.php">Seasons</a>
+							</div>
+						</li>
 					</ul>
 				</nav>
 			<?php

@@ -72,7 +72,9 @@
 							<?php
 						}
 
+
 					?>
+					<h2>Edit Schedule</h2>
 					<table>
 						<tr>
 							<th>Team</th>

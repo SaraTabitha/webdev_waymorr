@@ -1,5 +1,5 @@
 
-var submenu_slug_array = ["baseball", "flag-football", "team"]
+var submenu_slug_array = ["baseball", "flag-football", "team", "settings"]
 
 //when user mouses over menu item, sub menu appears beneath
 function submenuMouseOver(slug){
