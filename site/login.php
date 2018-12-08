@@ -11,6 +11,26 @@
 				if(is_password_correct($email, $pwd)) {
 					//TODO Set Session variables
 					$_SESSION['user_id'] = is_password_correct($email, $pwd); //sets user_id to the Id in the User table
+
+					if(isCoach($_SESSION['user_id'])){
+						$_SESSION['isCoach'] = true;
+						
+					}
+					else{
+						$_SESSION['isCoach'] = false;
+						
+					}
+
+					if(isAdmin($_SESSION['user_id'])){
+						$_SESSION['isAdmin'] = true;
+						
+					
+					}
+					else{
+						$_SESSION['isAdmin'] = false;
+						
+					}
+
 					redirect("home.php");
 					?>
 					<p><?php echo "Successfully logged in!" ?></p>

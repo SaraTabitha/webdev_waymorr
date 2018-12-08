@@ -50,6 +50,72 @@
 		
 	}
 
+	function isCoach($user_id){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `IsCoach` FROM `User` WHERE `Id` LIKE :userid";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userid", $user_id);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				foreach($result as $row){
+					$isCoach = $row['IsCoach'];
+					
+					if($isCoach === '1'){
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			
+			}
+			else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
+	function isAdmin($user_id){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `IsAdmin` FROM `User` WHERE `Id` LIKE :userid";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userid", $user_id);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				foreach($result as $row){
+					$isAdmin = $row['IsAdmin'];
+					
+					if($isAdmin === '1'){
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			
+			}
+			else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
 	function ensure_logged_in() {
 		if(!isset($_SESSION["name"])) {
 			redirect("login.php", "You must log in before you can view that page.");
