@@ -526,5 +526,19 @@
 			echo "Failed to get players: " . $e->getMessage();
 		}
 	}
+	function update_urgent_message($id, $message, $active){
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "UPDATE `Urgent` SET `Message`= :message,`Active`= :active WHERE `id` LIKE :id";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("message", $message);
+			$statement->bindParam("active", $active);
+			$statement->bindParam("id", $id);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
+		}
+	}
 
 ?>
