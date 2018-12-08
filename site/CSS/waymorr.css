@@ -65,12 +65,14 @@ h1 {
 
 input[type="submit"] {
     border: 1px solid navy;
-    background: #182899;
+    background: #2739b4;
     color: white;
     height: 30px;
     font-family: 'NCAA Purdue Boilermakers';
     width: 150px;
     font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 input[type="submit"]:hover {
         color: red;
