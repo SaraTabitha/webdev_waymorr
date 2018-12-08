@@ -360,7 +360,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT FirstName, LastName, Email, Phone, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
+			$sql = "SELECT Id, FirstName, LastName, Email, PhoneNumber, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -540,6 +540,92 @@
 			echo "Failed to update player: " . $e->getMessage();
 		}
 	}
+
+	function get_current_season() {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "SELECT Year FROM Season WHERE Season.IsCurrent = 1";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$rows = $statement->fetchAll();
+			if($rows) {
+				foreach($rows as $row) {
+					return $row['Year'];
+				}
+			} else {
+				return false;
+			}
+		} catch(PDOException $e) {
+			echo "Failed to get current season: " . $e->getMessage();
+		}
+	}
+
+	function create_new_season($year) {
+		end_current_season();
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "INSERT INTO Season (Year, IsCurrent) VALUES (:year, 1)";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("year", $year);
+			$statement->execute();
+		} catch (PDOException $e) {
+			echo "Failed to insert new season" . $e->getMessage();
+		}
+		$team_types = get_all_team_types();
+		if($team_types != false) {
+			create_teams($team_types, $year);
+		}
+	}
+
+	function create_teams($teamTypes, $year) {
+		global $db;
+		foreach($teamTypes as $teamType) {
+			try {
+				$name = $year . " " . $teamType['Name'];
+				$pdo = $db;
+				$sql = "INSERT INTO Team (Name, SeasonId, CoachId, TeamType) VALUES (:name, (SELECT Id FROM Season WHERE IsCurrent = 1), 0, :teamType)";
+				$statement = $pdo->prepare($sql);
+				$statement->bindParam("name", $name);
+				$statement->bindParam(":teamType", $teamType['Id']);
+				$statement->execute();
+			} catch(PDOException $e) {
+				echo "Failed to create new teams" . $e->getMessage();
+			}
+		}
+	}
+
+	function get_all_team_types() {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "SELECT Id, Name FROM TeamType";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$rows = $statement->fetchAll();
+			if($rows) {
+				return $rows;
+			} else {
+				return false;
+			}
+		} catch(PDOException $e) {
+			echo "Failed to end the current season: " . $e_>getMessage();
+		}
+	}
+
+	function end_current_season() {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "UPDATE Season Set IsCurrent = 0 WHERE IsCurrent = 1";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to end the current season: " . $e->getMessage();
+		}
+	}
+
 	function delete_news($id){
 		
 		global $db;
