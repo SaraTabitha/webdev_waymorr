@@ -350,4 +350,19 @@
 		}
 	}
 
+	function get_all_players_for_user($userId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT FirstName, LastName, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1 AND Player.UserId = :userId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userId", $userId);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
+
 ?>
