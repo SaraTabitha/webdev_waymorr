@@ -471,6 +471,20 @@
 			echo "Failed to get players: " . $e->getMessage();
 		}
 	}
+	function get_all_news(){
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `News` ORDER BY `Date` DESC"; //news will appear from most recent date to least recent
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
 
 	function delete_player($playerId) {
 		global $db;
@@ -493,6 +507,34 @@
 			$statement = $pdo->prepare($sql);
 			$statement->bindParam("playerId", $playerId);
 			$statement->bindParam("newTeamId", $newTeamId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
+		}
+	}
+	function get_urgent(){
+	global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `Urgent`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
+	function update_urgent_message($id, $message, $active){
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "UPDATE `Urgent` SET `Message`= :message,`Active`= :active WHERE `id` LIKE :id";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("message", $message);
+			$statement->bindParam("active", $active);
+			$statement->bindParam("id", $id);
 			$statement->execute();
 		} catch(PDOException $e) {
 			echo "Failed to update player: " . $e->getMessage();

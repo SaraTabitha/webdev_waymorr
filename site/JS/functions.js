@@ -28,4 +28,20 @@ $.each(submenu_slug_array, function( index, slug){
 });
 
 
+function loadUrgentMessage(){
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText); //if returning a json object
 
+            if (document.getElementById("urgentMessage") != null) {
+                document.getElementById("urgentMessage").innerHTML = myObj;
+            }
+            
+            
+        }
+    };
+    ajax.open("GET", "urgent.php", true);
+    ajax.send();
+}
+loadUrgentMessage();
