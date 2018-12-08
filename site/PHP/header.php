@@ -8,7 +8,7 @@
             if(isset($_SESSION['user_id'])){
                 //if user is logged in
                 ?>
-                <a id="logout" class="sport_font" href="logout.php">Login</a> 
+                <a id="logout" class="sport_font" href="logout.php">Logout</a> 
                 <?php
             }
             else{
