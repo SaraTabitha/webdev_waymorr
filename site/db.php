@@ -69,14 +69,14 @@
 		$pwdHash = crypt($password, $email);
 
 		if($firstName2 != "") {
-			$firstName2 = $db->quote($firstName2);
-			$lastName2 = $db->quote($lastName2);
+			//$firstName2 = $db->quote($firstName2); //->quote adds quotes around the input in the db
+			//$lastName2 = $db->quote($lastName2);
 			if($phone2 != "") {
-				$phone2 = $db->quote($phone2);
+				//$phone2 = $db->quote($phone2);
 			} else {
-				$phone2 = NULL;
+				//$phone2 = NULL;
 			} if($email2 != "") {
-				$email2 = $db->quote($email2);
+				//$email2 = $db->quote($email2);
 			} else {
 				$email2 = NULL;
 			}
