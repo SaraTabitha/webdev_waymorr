@@ -283,4 +283,93 @@
 		}
 	}
 
+	function assign_team($age, $gender, $sport) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT Team.Id AS TeamId, TeamType.Name, Season.Id AS SeasonId FROM `Team` INNER JOIN Season ON Season.Id = Team.SeasonId INNER JOIN TeamType ON TeamType.Id = Team.TeamType WHERE (TeamType.Gender = :gender OR TeamType.Gender = 3) AND :age BETWEEN TeamType.LowerAge AND TeamType.UpperAge AND Season.IsCurrent = 1 AND TeamType.Sport = :sport";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("age", $age);
+			$statement->bindParam("gender", $gender);
+			$statement->bindParam("sport", $sport);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result) {
+				foreach($result as $row) {
+					return $row;
+				}
+			} else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
+	function register_player($firstName, $lastName, $age, $teamId, $gender, $birthdate, $userId, $seasonId, $shirtSize) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "INSERT INTO Player (FirstName, LastName, Age, TeamId, Gender, BirthDate, UserId, SeasonId, ShirtSize) VALUES (:firstName, :lastName, :age, :teamId, :gender, :birthdate, :userId, :seasonId, :shirtSize)";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("firstName", $firstName);
+			$statement->bindParam("lastName", $lastName);
+			$statement->bindParam("age", $age);
+			$statement->bindParam("teamId", $teamId);
+			$statement->bindParam("gender", $gender);
+			$statement->bindParam("birthdate", $birthdate);
+			$statement->bindParam("userId", $userId);
+			$statement->bindParam("seasonId", $seasonId);
+			$statement->bindParam("shirtSize", $shirtSize);
+			$statement->execute();
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
+	function get_all_users() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT FirstName, LastName, Email, Phone, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get users: " . $e->getMessage();
+		}
+	}
+
+	function get_current_players() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT FirstName, LastName, Age, Gender, ShirtSize, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get players: " . $e->getMessage();
+		}
+	}
+
+	function get_current_teams() {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "SELECT Name, User.FirstName, User.LastName, CoachId FROM Team INNER JOIN User ON User.Id = Team.CoachId INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+			return $result;
+		} catch(PDOException $e) {
+			echo "Failed to get teams: " . $e->getMessage();
+		}
+	}
+
 ?>
