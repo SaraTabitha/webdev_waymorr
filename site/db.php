@@ -626,4 +626,17 @@
 		}
 	}
 
+	function delete_news($id){
+		
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "DELETE FROM `News` WHERE `Id` = :id";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("id", $id);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
+		}
+	}
 ?>
