@@ -6,7 +6,7 @@
     <?php
         require_once("db.php");
         if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true){
-
+    
             ?>
             <h1>Edit Home </h1>
             <h3>Edit Urgent Message </h3>
@@ -35,7 +35,13 @@
                   <br>
                   <input type="submit" value="Update Message" />
             </form>
+            <br>
+            <br>
+            <h3>Update News </h3>
+            
             <?php
+
+            
         }
         else{
             redirect("home.php");

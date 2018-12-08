@@ -33,8 +33,11 @@ function loadUrgentMessage(){
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var myObj = JSON.parse(this.responseText); //if returning a json object
-           
-            document.getElementById("urgentMessage").innerHTML = myObj;
+
+            if (document.getElementById("urgentMessage") != null) {
+                document.getElementById("urgentMessage").innerHTML = myObj;
+            }
+            
             
         }
     };
