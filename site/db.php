@@ -360,7 +360,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT FirstName, LastName, Email, Phone, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
+			$sql = "SELECT Id, FirstName, LastName, Email, PhoneNumber, FirstName2, LastName2, Email2, Phone2, IsAdmin, IsCoach FROM User";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
