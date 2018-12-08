@@ -96,4 +96,22 @@
 		echo "Success";
 	}
 
+	function get_player_info($user_id){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT * FROM `User` WHERE `Id` LIKE :userid";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userid", $user_id);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			return $result;
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
 ?>
