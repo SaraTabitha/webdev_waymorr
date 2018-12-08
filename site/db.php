@@ -260,6 +260,54 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+	function get_teamid_from_teamName($team_name){
+	 
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `Id` FROM `Team` WHERE `Name` LIKE :teamname";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("teamname", $team_name);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				foreach($result as $row){
+					return $row['Id'];
+				}
+			}
+			else{
+				return false;
+			}
+			
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+	function get_all_team_names(){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `Name` FROM `Team`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+			
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
 
 	function assign_team($age, $gender, $sport) {
 		global $db;
@@ -348,6 +396,27 @@
 		} catch(PDOException $e) {
 			echo "Failed to get teams: " . $e->getMessage();
 		}
+	}
+
+	function add_scheduled_game($team_name, $opponent, $isHome, $date, $time){
+		global $db;
+		$team_id = get_teamid_from_teamName($team_name); //grabs id # 
+		try{
+			$pdo = $db;
+			$sql = "INSERT INTO ScheduledGame (TeamId, Opponent, IsHomeGame, Date, Time) VALUES (:team_id, :opponent, :isHome, :date, :time)";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("team_id", $team_id);
+			$statement->bindParam("opponent", $opponent);
+			$statement->bindParam("isHome", $isHome);
+			$statement->bindParam("date", $date);
+			$statement->bindParam("time", $time);
+			$statement->execute();
+
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	
 	}
 
 	function get_all_players_for_user($userId) {
