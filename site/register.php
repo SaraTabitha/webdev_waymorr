@@ -20,15 +20,66 @@
 			  $address = $_POST["mailingAddress"];
 			  $email2 = $_POST["email2"];
 
-			  //TODO verify required fields
+			  if(has_user($email) == true) {
+				$error = "There is already a user with that email.";
+			  } else if(verify_email($email) == false || ($email2 != "" && verify_email($email2) == false)) {
+			  	  $error = "Please enter a valid email";
+			  } else if(verify_phone($phone) == false || ($phone2 != "" && verify_phone($phone2) == false)) {
+					$error = "Please enter a valid phone number";
+			  } else if($email == "" || $password == "" || $retypePassword == "" || $firstName == "" || $lastName == "" || $phone == "" || $address == "") {
+			  	  $error = "Please fill in all required fields";
+			  } else if($password != $retypePassword) {
+			  	  $error = "Please make sure your password matches when you retype it";
+			  } else if(verify_password($password) == false) {
+					$error = "Your password must be at least 8 characters long and contain a capital letter, a number, and some other character";
+			  } else {
+					register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
+			  }
+			}
 
-			  //TODO verify email
+			function verify_email($email) {
+				$at = strpos($email, '@');
+				if($at == false) {
+					return false;
+				} else {
+					$dot = strpos($email, '.', $at);
+					$length = strlen($email);
+				}
+				return true;
+			}
 
-			  //TODO verify password (matches and fulfills requirements)
+			function verify_phone($phone) {
+				$array = str_split($phone);
+				foreach($array as $char) {
+					if(is_numeric($char) == false && $char != '(' && $char != ')' && $char != '-') {
+						return false;
+					}
+				}
+				return true;
+			}
 
-			  //TODO verify phone numbers
-              
-			  register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
+			function verify_password($password) {
+				$length = 0;
+				$hasCapLetter = false;
+				$hasNumber = false;
+				$hasNonLetterOrNumber = false;
+				$array = str_split($password);
+				foreach($array as $char) {
+					if($char >= 'A' && $char <= 'Z') {
+						$hasCapLetter = true;
+					} else if(is_numeric($char)) {
+						$hasNumber = true;
+					} else if($char >= 'a' && $char <= 'z') {
+						$hasLetter = true;
+					} else {
+						$hasNonLetterOrNumber = true;
+					}
+					$length = $length + 1;
+				}
+				if($length >= 8 && $hasCapLetter == true && $hasNumber == true && $hasNonLetterOrNumber == true) {
+					return true;
+				}
+				return false;
 			}
 		?>
         <h1>Registration</h1>

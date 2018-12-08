@@ -23,6 +23,20 @@
 		}
 	}
 
+	function has_user($email) {
+		global $db;
+		$pdo = $db;
+		$sql = "SELECT Email FROM User WHERE Email LIKE :email";
+		$statement = $pdo->prepare($sql);
+		$statement->bindParam("email", $email);
+		$statement->execute();
+		$rows = $statement->fetchAll();;
+		if($rows) {
+			return true;
+		}
+		return false;
+	}
+
 
 	function is_password_correct($email, $password) {
 		global $db;
