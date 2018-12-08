@@ -260,5 +260,27 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+	function get_all_team_names(){
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT `Name` FROM `Team`";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+			
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
 
 ?>
