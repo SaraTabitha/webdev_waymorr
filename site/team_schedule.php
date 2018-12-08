@@ -23,22 +23,14 @@
 					$date = $_POST["date"];
 					$time = $_POST["time"];
 
-					?>
-					<p><?= $team ?></p>
-					<p><?= $opponent ?></p>
-					<p><?= $isHome ?></p>
-					<p><?= $date ?></p>
-					<p><?= $time ?></p>
-					
-					<?php
 					add_scheduled_game($team, $opponent, $isHome, $date, $time);
 				}
 				
 				?>
 					<?php 
-						function team_dropdown($dropdown_name, $selected){
+						function team_dropdown($selected){
 							?>
-							<select name="<?= $dropdown_name ?>">
+							<select name="team">
 								<?php
 									$team_names = get_all_team_names();
 									foreach($team_names as $row){
@@ -56,12 +48,9 @@
 							</select>
 							<?php
 						}
-						$dropdown_name = "test1";
-						$selected = "2019 Junior Fastpitch";
-						team_dropdown($dropdown_name, $selected);
 
-						function isHome_dropdown($game_id, $selected){
-							$dropdown_name = "isHome".$game_id;
+						function isHome_dropdown($selected){
+							$dropdown_name = "isHome";
 							?>
 							<select name="<?= $dropdown_name ?>">
 								<option value="true" 
@@ -82,9 +71,6 @@
 							</select>
 							<?php
 						}
-						$game_id = "test1";
-						$selected = false;
-						isHome_dropdown($game_id, $selected);
 
 					?>
 					<table>
@@ -94,9 +80,11 @@
 							<th>Home</th>
 							<th>Date</th>
 							<th>Time</th>
-							<th>Delete</th>
+							<th>Edit</th>
+							<th></th>
 						</tr>
-						<?PHP
+						
+						<?php
 							$schedule = get_team_schedule();
 							foreach($schedule as $row){
 								$game_id = $row['Id']; //id of the scheduled game
@@ -116,6 +104,8 @@
 								//time: 'time' . Id
 
 								?>
+									<form  method="POST" action="changeSchedule.php">
+									<input type="hidden" name="id" value="<?= $game_id ?>"/>
 									<tr>
 										<td>
 										<?php 
@@ -123,7 +113,7 @@
 										//game_id -> selected form name
 										//teamName -> name that becomes the default value of the dropdown for this row
 
-										team_dropdown($game_id, $teamName);
+											team_dropdown($teamName);
 
 										
 										?>
@@ -133,30 +123,43 @@
 										<td><?php 
 											//opponent text field
 											?>
-											<input type="text" name ="<?php echo "opponent" . $game_id; ?>" value="<?= $opponent?>"/>
+											<input type="text" name ="opponent" value="<?= $opponent?>"/>
 										</td>
 										<td><?php 
 											//yes or no dropdown
-											isHome_dropdown($game_id, $isHome);
+											isHome_dropdown($isHome);
 										?></td>
 										<td><?php
 											//date datepicker
 											?>
-											<input type="date" name ="<?php echo "date" . $game_id; ?>"  value="<?= $gameDate ?>"/>
+											<input type="date" name ="date"  value="<?= $gameDate ?>"/>
 										</td>
 										<td>
-										<input type="time" name ="<?php echo "time" . $game_id; ?>"  value="<?= $gameTime ?>"/>
+											<input type="time" name ="time"  value="<?= $gameTime ?>"/>
+										</td>
+										<td>
+											<select name="action">
+												<option value="update">Update</option>
+												<option value="delete">Delete</option>
+											</select>
+											
+										</td>
+										<td>
+											<input type="submit"  value="Submit"/>
 										</td>
 									</tr>
+									</form>
+									
 								<?php
 							
 							}
 						?>
+						
 					 </table>
-					 <input type="submit" value="Save Changes"/>
+					 <!--<input type="submit" value="Save Changes"/>-->
 
 					 
-					 <h2>Add</h2>
+					 <h2>Add Game to Schedule</h2>
 					 <form method="POST" action="team_schedule.php">
 					 <table>
 						<tr>
@@ -165,7 +168,7 @@
 							<th>Home</th>
 							<th>Date</th>
 							<th>Time</th>
-							<th>Delete</th>
+							<th></th>
 						</tr>
 						<tr>
 							<td>
