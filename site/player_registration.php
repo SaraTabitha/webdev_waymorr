@@ -21,7 +21,6 @@
 					if($age > 18) {
 						$error = "Sorry. A player must be 18 years old or younger in order to play on a team";
 					} else {
-						echo $gender . " ";
 						if($gender == "Male") {
 							$gender = 1;
 						} else {
@@ -31,12 +30,10 @@
 						} else {
 							$sport = 2;
 						}
-						echo $sport . " ";
 						$team = assign_team($age, $gender, $sport);
 						$team_id = $team['TeamId'];
 						$name = $team['Name'];
 						$seasonId = $team['SeasonId'];
-						echo $team_id . " " . $name . " " . $seasonId . " ";
 						register_player($firstName, $lastName, $age, $team_id, $gender, $birthdate, $_SESSION['user_id'], $seasonId, $shirtSize);
 					}
 				}
