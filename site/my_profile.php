@@ -80,7 +80,9 @@
 							<th>Team Name</th>
 						</tr>
 					</thead>
-					<?php foreach($players as $player) { 
+					<?php 
+					if($players) {
+					foreach($players as $player) { 
 						$count = $count + 1;
 					?>
 						<tr>
@@ -88,7 +90,10 @@
 							<td><?php echo $player["FirstName"];?></td>
 							<td><?php echo $player["Name"];?></td>
 						</tr>
-					<?php } ?>
+					<?php }
+					} else { ?>
+						<td colspan=3>You currently have no players registered</td>
+					<?php }?>
 				</table>
 				<?php
 					if($count == 0) {
