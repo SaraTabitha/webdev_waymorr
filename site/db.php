@@ -27,7 +27,7 @@
 	function is_password_correct($email, $password) {
 		global $db;
 		$pdo= $db;
-		$sql = "SELECT PHash FROM User WHERE Email LIKE :email";
+		$sql = "SELECT Id,PHash FROM User WHERE Email LIKE :email";
 		$statement = $pdo->prepare($sql);
 		$statement->bindParam("email", $email);
 		$statement->execute();
@@ -96,7 +96,7 @@
 		echo "Success";
 	}
 
-	function get_player_info($user_id){
+	function get_user_info($user_id){
 		global $db;
 
 		try{

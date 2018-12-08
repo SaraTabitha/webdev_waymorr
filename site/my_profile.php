@@ -4,6 +4,7 @@
     <body>
         <?php include_once "PHP/header.php" ?>
         <?php 
+        include_once("db.php");
         if(isset($_SESSION['user_id'])){
 
             $arr = get_user_info($_SESSION['user_id']);
