@@ -3,6 +3,7 @@
         <title>Way-Morr Youth Sports</title>
         <meta name="author" content="Sara Tabitha Mayhew, Jon Otto">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name=“robots” content=“noindex, nofollow” />
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="CSS/waymorr.css">

@@ -12,7 +12,9 @@
         </br>
         <a class="facebook" href="https://www.facebook.com/WayMorrYouthSports/" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
     </div>
-
+	<div>
+	<p style="color:black;">Disclaimer: This site is under development by UW-Oshkosh students as a prototype for the organization Waymorr Youth Sports. Nothing on the site should be construed in any way as being officially connected with or representative of Waymorr Youth Sports.</p>
+	</div>
 
 
     <script src="jQuery/jquery-3.3.1.min.js"></script>
