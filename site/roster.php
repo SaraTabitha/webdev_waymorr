@@ -18,6 +18,7 @@
 					<th>Shirt Size</th>
 					<th>Team Name</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<?php foreach($currentPlayers as $player) { ?>
@@ -35,6 +36,9 @@
 					<td><?php echo $player['Name']; ?></td>
 					<td>
 						<button>Edit Team</button>
+					</td>
+					<td>
+						<button>Delete Player</button>
 					</td>
 				</tr>
 			<?php } ?>

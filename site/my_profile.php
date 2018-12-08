@@ -68,8 +68,43 @@
                     <input type="submit" value="Edit Contact Info" />
                 </form>
                 <h2>Registered Players</h2>
-                <p>players...</p>
-                <p>Registered for... teams</p>
+                <?php 
+					$players = get_all_players_for_user($_SESSION['user_id']);
+					$count = 0;
+				?>
+				<table>
+					<thead>
+						<tr>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Team Name</th>
+						</tr>
+					</thead>
+					<?php 
+					if($players) {
+					foreach($players as $player) { 
+						$count = $count + 1;
+					?>
+						<tr>
+							<td><?php echo $player["LastName"];?></td>
+							<td><?php echo $player["FirstName"];?></td>
+							<td><?php echo $player["Name"];?></td>
+						</tr>
+					<?php }
+					} else { ?>
+						<td colspan=3>You currently have no players registered for this season</td>
+					<?php }?>
+				</table>
+				<?php
+					if($count == 0) {
+						$payment = 0;
+					} else if($count == 1) {
+						$payment = 30;
+					} else {
+						$payment = 55;
+					}
+				?>
+				<p>Your Total in Player Fees for this year is: $<?php echo $payment;?></p>
             <?php
         }
         else{

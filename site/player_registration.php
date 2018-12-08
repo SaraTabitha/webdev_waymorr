@@ -6,8 +6,10 @@
         <?php
 			include_once("db.php");
 			$error = "";
+			$success = "";
 			if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$error = "";
+				$success = "";
 				$sport = $_POST["sport"];
 				$firstName = $_POST["firstName"];
 				$lastName = $_POST["lastName"];
@@ -35,6 +37,7 @@
 						$name = $team['Name'];
 						$seasonId = $team['SeasonId'];
 						register_player($firstName, $lastName, $age, $team_id, $gender, $birthdate, $_SESSION['user_id'], $seasonId, $shirtSize);
+						$success = $firstName . " was registered and was assigned to the " . $name . " team.";  
 					}
 				}
 				
@@ -44,7 +47,8 @@
 		?>
 
         <h1>Player Registration</h2>
-		<p><?php echo $error; ?> </p>
+		<p class="success"><?php echo $success; ?> </p>
+		<p class="error"><?php echo $error; ?> </p>
         <section>
             <form method="post" action="player_registration.php">
             <!-- required -->
