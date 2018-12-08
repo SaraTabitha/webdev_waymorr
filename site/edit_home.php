@@ -9,15 +9,18 @@
 
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $_POST['news'];
-					    $action = $_POST["action"];
+					    $action = $_POST['action'];
+                        
 
                         if($action === 'update'){
                             //TODO load selected news item for the admin to edit it
-                            redirect("edit_home.php");
+                            //redirect("edit_home.php");
                         }
                         else if($action === 'delete'){
                             delete_news($id);
-                            redirect("edit_home.php");
+                            //redirect("edit_home.php");
+                        }
+                        else if($action === 'add'){
                         }
             }   
     
@@ -72,6 +75,19 @@
                     <option value="delete">Delete</option>
                 <select>
                 <input type="submit" value="Submit"/>
+            </form>
+            <h3>Submit News</h3>
+            <form method="POST" action="edit_home.php">
+                <input type="hidden" name="action" value="add"/>
+                <label for="title"><strong>Title: </strong></label>
+                <input type="text" name="title" />
+                <br>
+                <label for="url"><strong>Image URL: </strong></label>
+                <input type="text" name="url"/>
+                <br>
+                <label for="content"><strong>Content: </strong></label>
+                <input type="text" name="content"/>
+                <input type="submit" value="Add News"/>
             </form>
             <?php
 
