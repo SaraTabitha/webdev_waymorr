@@ -38,7 +38,7 @@
 				$correct_pwrd = $row["PHash"];
 				
 				if(strcmp($correct_pwrd, crypt($password, $email)) == 0) {
-					return true;
+					return $row["Id"]; //user_id session variable
 				} else {
 					return false;
 				}

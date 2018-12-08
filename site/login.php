@@ -10,7 +10,8 @@
 				//echo is_password_correct($email, $pwd);
 				if(is_password_correct($email, $pwd)) {
 					//TODO Set Session variables
-					//redirect("home.php");
+					$_SESSION['user_id'] = is_password_correct($email, $pwd); //sets user_id to the Id in the User table
+					redirect("home.php");
 					?>
 					<p><?php echo "Successfully logged in!" ?></p>
 					<?php
