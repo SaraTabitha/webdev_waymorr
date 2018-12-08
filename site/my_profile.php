@@ -3,6 +3,12 @@
     <?php include_once 'PHP/head.php' ?>
     <body>
         <?php include_once "PHP/header.php" ?>
+        <?php 
+        if(){
+            
+        }
+        
+        ?>
         <h1>My Profile</h1>
         <p>Firstname, lastname</p>
         <p>Registered for... teams</p>

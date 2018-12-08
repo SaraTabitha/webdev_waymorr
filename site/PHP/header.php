@@ -5,7 +5,7 @@
             <?php
 			 
 			include_once("db.php");
-            if(isset($_SESSION['username'])){
+            if(isset($_SESSION['user_id'])){
                 //if user is logged in
                 ?>
                 <a id="logout" class="sport_font" href="logout.php">Login</a> 
@@ -97,7 +97,7 @@
 
 			<?php
 			}
-			else if(isset($_SESSION['username'])){
+			else if(isset($_SESSION['user_id'])){
 			//user that is logged in (but is not a coach or admin)
 			?>
 				<nav id="menu">
