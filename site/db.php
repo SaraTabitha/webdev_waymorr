@@ -114,4 +114,24 @@
 		}
 	}
 
+	function update_contact_info($user_id, $password, $phone, $email, $phone2, $email2){
+		global $db;
+		$phash = crypt($password, $email); //if email changes then the hash wont be correct when they login again so hash/password has to change along with the email
+		try{
+			$pdo = $db;
+			$sql = "UPDATE `User` SET `PHash`= :phash,`Email`= :email,`PhoneNumber`= :phone,`Email2`= :email2,`Phone2`= :phone2 WHERE `Id` LIKE :userid";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("phash", $phash);
+			$statement->bindParam("email", $email);
+			$statement->bindParam("phone", $phone);
+			$statement->bindParam("email2", $email2);
+			$statement->bindParam("phone2", $phone2);
+			$statement->bindParam("userid", $user_id);
+			$statement->execute();
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
+
 ?>
