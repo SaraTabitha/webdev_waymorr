@@ -77,14 +77,14 @@
     <span id="add_news_message"></span>
     <form method="POST" action="edit_home.php">
         <label for="title"><strong>Title: </strong></label>
-        <input type="text" name="title" />
+        <input required type="text" name="title" />
         <br>
         <label for="url"><strong>Image URL: </strong></label>
         <input type="text" name="url" />
         <br>
         <label for="content"><strong>Content: </strong></label>
         <br>
-        <textarea cols="75" rows="4" name="content"></textarea>
+        <textarea  required cols="75" rows="4" name="content"></textarea>
         <br>
         <input type="submit" name="add_news" value="Add News" />
     </form>
@@ -93,7 +93,7 @@
 
     <form method="POST" action="edit_home.php">
         <label for="title"><strong>Select: </strong></label>
-        <select name="news">
+        <select name="news" required>
             <?php
             $arr = get_all_news();
             foreach($arr as $row){
