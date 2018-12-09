@@ -1,3 +1,7 @@
+<!--
+	The db file for connecting to the database and the home to database functions used
+-->
+
 <?php
 	session_start();
 	require_once('db_credentials.php');

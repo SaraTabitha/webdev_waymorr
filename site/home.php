@@ -1,3 +1,8 @@
+<!--
+	The home page for Way-Morr
+	Displays news and updates that can be added by an admin
+	A user is not required to be logged in to view this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

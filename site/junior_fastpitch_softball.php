@@ -1,3 +1,7 @@
+<!--
+	This is the home page for the Junior Fastpitch Team
+	A User does not need to be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

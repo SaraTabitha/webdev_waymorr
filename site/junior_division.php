@@ -1,3 +1,7 @@
+<!--
+	This is the Home page for the Junior Flag Football Division
+	A User is not required to be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

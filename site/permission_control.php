@@ -1,10 +1,19 @@
-﻿<!DOCTYPE html>
+﻿<!--
+	This page allows an admin to be able to see all users that have an account 
+	Admin can also add/remove admin and coaching rights for users
+	A user must be logged in and have admin permissions to access this page
+-->
+<!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
 <body>
     <?php include_once "PHP/header.php" ?>
 	<?php 
 		include_once "db.php";
+		ensure_logged_in();
+		if(isset($_SESSION['isAdmin']) == false || $_SESSION['isAdmin'] == false) {
+			redirect("home.php", "You do not have permission to view this page");
+		}
 		$users = get_all_users();
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
 			if(isset($_REQUEST['makeCoach'])) {

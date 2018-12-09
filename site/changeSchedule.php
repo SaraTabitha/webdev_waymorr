@@ -1,4 +1,8 @@
-﻿<?php
+﻿<!--
+	Processes the schedule change form data
+-->
+
+<?php
     require_once("db.php");
 
     $id = $_POST['id'];

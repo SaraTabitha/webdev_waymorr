@@ -1,3 +1,8 @@
+<!--
+	This is a page where a user can edit their account information
+	It also contains information regarding the players they have registered for the current season<
+	A User must be logged in to access this page but any permission is allowed to see it when they are logged in
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

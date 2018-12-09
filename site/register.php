@@ -1,3 +1,8 @@
+<!--
+	This page is for a user to register an account for the web site
+	A user can enter their own info and also can add the optional info for a spouse if they want a family account
+	A user does not need to be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

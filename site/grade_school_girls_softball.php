@@ -1,3 +1,7 @@
+<!--
+	This page is the Home Page for the Grade School Girls Softball Team
+	A user is not required to be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
