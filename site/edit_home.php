@@ -73,7 +73,7 @@
                 <select name="action">
                     <option value="update">Edit</option>
                     <option value="delete">Delete</option>
-                <select>
+                </select>
                 <input type="submit" value="Submit"/>
             </form>
             <h3>Submit News</h3>

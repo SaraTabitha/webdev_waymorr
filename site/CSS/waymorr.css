@@ -115,7 +115,7 @@ nav > ul > li:hover, .submenu > a:hover {
     position: absolute;
     display: block;
     background:white;
-
+    z-index:2;
     padding: 6px;
     border: 1px dashed red;
 } 
@@ -153,31 +153,14 @@ nav{
 .menu-invisible{
     display: none;
 }
-
-/* mobile logo styling */
-@media screen and (max-width:1055px) {
-    #menu{
-        height: 118px;
-    }
-}
-@media screen and (max-width:552px){
-    #youth_sports{
-        line-height: 80px;
-    }
-    #logo{
-        height: 300px;
-    }
-    #menu{
-        height:177px;
-    }
-    
-}
-
-#content{
+#content {
     min-height: calc(100vh - 395px);
     margin: 0 auto;
     width: calc(100vw - 200px);
 }
+
+
+
 footer{
     height:140px;
     /* stick footer to bottom */
@@ -223,7 +206,48 @@ th, td{
 .error {
     color: red;
 }
+img{
+    max-width:400px;
+}
 
-/*.hidden {
-    display: none;
-}*/
+/* mobile styling */
+@media screen and (max-width:1055px) {
+    #menu {
+        height: 118px;
+    }
+}
+
+@media screen and (max-width:552px) {
+    #youth_sports {
+        line-height: 80px;
+    }
+
+    #logo {
+        height: 400px;
+    }
+
+    #menu {
+        height: 480px;
+    }
+    nav > ul > li {
+        display:block;
+    }
+    img {
+        max-width: 300px;
+    }
+
+    #content {
+        width: auto;
+        padding: 10px;
+    }
+}
+@media screen and (max-width:475px){
+    #logout{
+        top:250px;
+    }
+}
+@media screen and (max-width:370px) {
+    #logout {
+        top: 0px;
+    }
+}

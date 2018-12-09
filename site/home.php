@@ -21,7 +21,7 @@
 				<?php
 				if($img_url != null){
 					?>
-					<img style="max-width:400px;" src="<?= $img_url ?>"/>
+					<img src="<?= $img_url ?>"/>
 					<?php
 				}
 				?>
