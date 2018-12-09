@@ -12,9 +12,6 @@
 		$error = "";
 		include_once "db.php"; 
 		ensure_logged_in();
-		if($SESSION_['isAdmin'] == false) {
-			redirect("home.php", "You do not have permission to view this page");
-		}
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$error = "";
 			$year = $_POST['year'];

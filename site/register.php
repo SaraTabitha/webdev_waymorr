@@ -27,8 +27,7 @@
 
 			  if(has_user($email) == true) {
 				$error = "There is already a user with that email.";
-			  } else if(verify_email($email) == false || ($email2 != "" && verify_email($email2) == false)) {
-			  	  $error = "Please enter a valid email";
+			  
 			  } else if(verify_phone($phone) == false || ($phone2 != "" && verify_phone($phone2) == false)) {
 					$error = "Please enter a valid phone number";
 			  } else if($email == "" || $password == "" || $retypePassword == "" || $firstName == "" || $lastName == "" || $phone == "" || $address == "") {
@@ -91,24 +90,24 @@
         <a href="login.php"> Go to Login </a>
         <form method="post" action="register.php">
         <label> E-mail: </label>
-        <input type="text" name="email" />
+        <input type="email" name="email" required/>
         <br>
         <label>Password:</label>
-        <input type="password" name="password" />
+        <input type="password" name="password" required/>
         <label>Retype Password:</label>
-        <input type="password" name="retypePassword" />
+        <input type="password" name="retypePassword" required/>
         <br>
 		<!-- required -->
             <label>First Name:</label>
-            <input type="text" name="firstName" />
+            <input type="text" name="firstName" required/>
             <label>Last Name:</label>
-            <input type="text" name="lastName" />
+            <input type="text" name="lastName" required/>
             </br>
             <label>Phone Number:</label>
-            <input type="text" name="phone"/>
+            <input type="text" name="phone" max-length="12" required/>
             </br>
             <label>Mailing Address:</label>
-            <input type="text" name="mailingAddress"/>
+            <input type="text" name="mailingAddress" required/>
             </br>
             </br>
             <h3>Parent/Guardian 2</h3>
