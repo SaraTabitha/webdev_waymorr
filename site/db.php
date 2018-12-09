@@ -374,7 +374,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Player.Id, FirstName, LastName, Age, Gender, ShirtSize, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1 ORDER BY Player.Age ASC";
+			$sql = "SELECT Player.Id, FirstName, LastName, Age, Gender, ShirtSize, Team.Name FROM Player INNER JOIN Team ON Team.Id = Player.TeamId INNER JOIN Season ON Player.SeasonId = Season.Id WHERE Season.IsCurrent = 1 ORDER BY Player.TeamId ASC";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -388,7 +388,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$sql = "SELECT Team.Id, Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -499,19 +499,6 @@
 		}
 	}
 
-	function update_players_team($playerId, $newTeamId) {
-		global $db;
-		try {
-			$pdo = $db;
-			$sql = "UPDATE Player SET (TeamId = :newTeamId) WHERE Id = :playerId";
-			$statement = $pdo->prepare($sql);
-			$statement->bindParam("playerId", $playerId);
-			$statement->bindParam("newTeamId", $newTeamId);
-			$statement->execute();
-		} catch(PDOException $e) {
-			echo "Failed to update player: " . $e->getMessage();
-		}
-	}
 	function get_urgent(){
 	global $db;
 		try{
@@ -639,4 +626,71 @@
 			echo "Failed to update player: " . $e->getMessage();
 		}
 	}
+
+	function edit_player_team($playerId, $newTeamId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "UPDATE Player SET TeamId = :newTeamId WHERE Id = :playerId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("newTeamId", $newTeamId);
+			$statement->bindParam("playerId", $playerId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to update player: " . $e->getMessage();
+		}
+	}
+
+	function make_coach($userId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "UPDATE User SET IsCoach = 1 WHERE Id = :userId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userId", $userId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to make user coach: " . $e->getMessage();
+		}
+	}
+
+	function remove_coach($userId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "UPDATE User SET IsCoach = 0 WHERE Id = :userId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userId", $userId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to remove user coach: " . $e->getMessage();
+		}
+	}
+
+	function make_admin($userId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "UPDATE User SET IsAdmin = 1 WHERE Id = :userId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userId", $userId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to make user admin: " . $e->getMessage();
+		}
+	}
+
+	function remove_admin($userId) {
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "UPDATE User SET IsAdmin = 0 WHERE Id = :userId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("userId", $userId);
+			$statement->execute();
+		} catch(PDOException $e) {
+			echo "Failed to remove user admin: " . $e->getMessage();
+		}
+	}
+
 ?>
