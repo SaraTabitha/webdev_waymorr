@@ -7,6 +7,7 @@
 		<?php
 			include_once 'db.php';
 			$currentPlayers = get_current_players();
+			$currentTeams = get_current_teams();
 		?>
 		<table id="playerTable">
 			<thead>

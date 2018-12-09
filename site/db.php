@@ -388,7 +388,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Name, User.FirstName, User.LastName FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$sql = "SELECT Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
