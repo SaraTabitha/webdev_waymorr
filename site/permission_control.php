@@ -6,6 +6,22 @@
 	<?php 
 		include_once "db.php";
 		$users = get_all_users();
+		if($_SERVER["REQUEST_METHOD"] == "POST") {
+			if(isset($_REQUEST['makeCoach'])) {
+				$userId = $_POST['Id'];
+				make_coach($userId);
+			} else if(isset($_REQUEST['makeAdmin'])) {
+				$userId = $_POST['Id'];
+				make_admin($userId);
+			} else if(isset($_REQUEST['removeAdmin'])) {
+				$userId = $_POST['Id'];
+				remove_admin($userId);
+			} else if(isset($_REQUEST['removeCoach'])) {
+				$userId = $_POST['Id'];
+				remove_coach($userId);
+			}
+			redirect("permission_control.php", "Updated User Successfully");
+		}
 	?>
     <h1>Permission Control </h1>
 	<br />
@@ -29,7 +45,8 @@
 		</thead>
 		<?php foreach($users as $user) { ?>
 			<tr>
-				<td class="hidden"><?php echo $user['Id'];?></td>
+				<form method="post" ACTION="permission_control.php">
+				<td class="hidden idColumn"><input name="Id" value=<?php echo $user['Id']; ?> /></th>
 				<td><?php echo $user['LastName']; ?></td>
 				<td><?php echo $user['FirstName'];?></td>
 				<td><?php echo $user['Email'];?></td>
@@ -53,11 +70,20 @@
 					}
 				?></td>
 				<td>
-					<button class="makeAdmin">Make Admin</button>
+					<?php if($user['IsCoach']) { ?>
+					<input type="submit" name="removeCoach" value="Remove Coach"/>
+					<?php } else { ?>
+					<input type="submit" name="makeCoach" value="Make Coach"/>
+					<?php } ?>
 				</td>
 				<td>
-					<button class="makeCoach">Make Coach</button>
+					<?php if($user['IsAdmin']) { ?>
+					<input type="submit" name="removeAdmin" value="Remove Admin"/>
+					<?php } else { ?>
+					<input type="submit" name="makeAdmin" value="Make Admin"/>
+					<?php } ?>
 				</td>
+				</form>
 			</tr>
 		<?php } ?>
 	</table>
