@@ -29,7 +29,9 @@
                 $phone2 = $row["Phone2"];
 				
             }
-
+			?>
+			<h1>My Profile</h1>
+			<?php
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //if contact info is edited
                 
@@ -41,10 +43,13 @@
                     $phone2 = $_POST["phone2"];
                     $email2 = $_POST["email2"];
                     update_contact_info($_SESSION['user_id'], $password, $phone, $email, $phone2, $email2);
+					?>
+                    <p style="color:green;">Contact info successfully updated.</p>
+                    <?php
                 }
                 else{
                     ?>
-                    <p>Password is incorrect.</p>
+                    <p style="color:red;">Password is incorrect.</p>
                     <?php
                 }
             }
@@ -54,7 +59,7 @@
             
             ?>
                 <form method="POST" action="my_profile.php">
-                    <h1>My Profile</h1>
+                    
                     <h2>Parent/Guardian 1</h2>
                     <p><strong>Name: </strong><?php echo $first . " " . $last; ?></p> 
                     <h3>Contact Info</h3>

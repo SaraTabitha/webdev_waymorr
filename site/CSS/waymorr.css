@@ -49,7 +49,7 @@ h2, h3, h4, h5, h6 {
     color: #182899;
    
 }
-p, h2, h3, h4, h5, h6, label{
+p, h2, h3, h4, h5, h6, label, span{
     font-family: sans-serif;
 }
 @font-face{
@@ -80,7 +80,7 @@ input, select, textarea {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"], button {
     padding: 0px;
     border: 1px solid navy;
     background: #2739b4;
@@ -96,7 +96,7 @@ input[type="button"] {
     padding: 0px;
     width: 100px;
 }
-input[type="submit"]:hover, input[type="button"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover, button:hover {
         color: red;
         background: white;
 }

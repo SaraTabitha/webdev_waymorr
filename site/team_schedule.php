@@ -37,7 +37,7 @@
 							?>
 							<select name="team">
 								<?php
-									$team_names = get_all_team_names();
+									$team_names = get_current_teams(); // only current season team names
 									foreach($team_names as $row){
 										$t_name = $row['Name'];
 
@@ -92,7 +92,10 @@
 						</tr>
 						
 						<?php
-							$schedule = get_team_schedule();
+							$schedule = get_current_team_schedule();
+							if($schedule != false){
+							
+							
 							foreach($schedule as $row){
 								$game_id = $row['Id']; //id of the scheduled game
 								$team_id = $row['TeamId']; //id# of the team 
@@ -159,10 +162,20 @@
 									
 								<?php
 							
-							}
+								}
+								//end of foreach
 						?>
 						
 					 </table>
+					 <?php
+						 }else{ //if $schedule is never set
+								?>
+								</table>
+								<p>There are currently no scheduled games.</p>
+								
+								<?php
+							}
+					 ?>
 					 <!--<input type="submit" value="Save Changes"/>-->
 
 					 
@@ -181,7 +194,7 @@
 							<td>
 								<select name="team">
 								<?php
-									$team_names = get_all_team_names();
+									$team_names = get_current_teams(); // only current season team names
 									foreach($team_names as $row){
 										$t_name = $row['Name'];
 
@@ -230,7 +243,7 @@
 							
 						</tr>
 						<?PHP
-							$schedule = get_team_schedule();
+							$schedule = get_current_team_schedule(); //should get schedules only from current season 
 							foreach($schedule as $row){
 								$game_id = $row['Id'];
 								$team_id = $row['TeamId'];

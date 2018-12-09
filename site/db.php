@@ -239,6 +239,29 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+
+	function get_current_team_schedule(){
+
+		global $db;
+
+		try{
+			$pdo = $db;
+			$sql = "SELECT ScheduledGame.Id,`TeamId`,`Opponent`,`IsHomeGame`,`Date`,`Time` FROM ScheduledGame INNER JOIN Team ON ScheduledGame.TeamId = Team.Id INNER JOIN Season ON Team.SeasonId = Season.Id WHERE Season.IsCurrent = '1'";
+			$statement = $pdo->prepare($sql);
+			$statement->execute();
+			$result = $statement->fetchAll();
+
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			echo "Failed: " . $e->getMessage(); 
+		}
+	}
 	function get_team_from_teamid($team_id){
 		global $db;
 
@@ -295,7 +318,7 @@
 
 		try{
 			$pdo = $db;
-			$sql = "SELECT `Name` FROM `Team`";
+			$sql = "SELECT `Name` FROM `Team`"; //does not take into account current season
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -392,7 +415,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Team.Id, Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId";
+			$sql = "SELECT Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId WHERE Season.IsCurrent = '1'";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
