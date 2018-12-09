@@ -85,11 +85,16 @@
                 <label for="url"><strong>Image URL: </strong></label>
                 <input type="text" name="url"/>
                 <br>
-                <label for="content"><strong>Content: </strong></label>
-                <input type="text" name="content"/>
+                <label for="content" ><strong>Content: </strong></label>
+                <br>
+                <textarea cols="75" rows="4" name="content"></textarea>
+                <br>
                 <input type="submit" value="Add News"/>
             </form>
+
             <?php
+            //TODO set up submit news form to actually add news
+            //TODO set up editing news (news appears that they selected/fills in?) (maybe edit/add new could utilize the same space)
 
             
         }
