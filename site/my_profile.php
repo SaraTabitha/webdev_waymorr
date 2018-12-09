@@ -73,7 +73,7 @@
                     <label for="email2"><strong>Email: </strong></label><input name="email2" type="text" value="<?php echo $email2; ?>">
                     <br>
                     <br>
-                    <label for="pass"><strong>Password: </strong></label><input name="pass" type="password">
+                    <label for="pass"><strong>Password: </strong></label><input required name="pass" type="password">
                     <br>
                     <input type="submit" value="Edit Contact Info" />
                 </form>
