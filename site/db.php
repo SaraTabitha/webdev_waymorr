@@ -498,7 +498,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT * FROM `News` ORDER BY `Date` DESC"; //news will appear from most recent date to least recent
+			$sql = "SELECT * FROM `News` ORDER BY `Date` ASC"; //news will appear from most recent date to least recent
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -715,5 +715,29 @@
 			echo "Failed to remove user admin: " . $e->getMessage();
 		}
 	}
-
+	function add_news_with_image($title,$date, $url, $content){
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "INSERT INTO `News`(`Title`, `Date`, `Content`, `Url`) VALUES (?,?,?,?)";
+			$statement = $pdo->prepare($sql);
+			$params  = [$title, $date, $content, $url];
+			$statement->execute($params);
+		} catch(PDOException $e) {
+			echo "Failed to remove user admin: " . $e->getMessage();
+		}
+	
+	}
+	function add_news($title,$date, $content){
+		global $db;
+		try{
+			$pdo = $db;
+			$sql = "INSERT INTO `News`(`Title`, `Date`, `Content`,) VALUES (?,?,?)";
+			$statement = $pdo->prepare($sql);
+			$params  = [$title, $date, $content];
+			$statement->execute($params);
+		} catch(PDOException $e) {
+			echo "Failed to remove user admin: " . $e->getMessage();
+		}
+	}
 ?>
