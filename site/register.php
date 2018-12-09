@@ -126,7 +126,6 @@
             </br>
         <input type="submit" />
         </form>
-		<p>Payment is $30 and $55 for two or more</p>
         <?php include_once "PHP/footer.php" ?>
     </body>
 </html>

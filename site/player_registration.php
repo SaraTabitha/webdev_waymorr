@@ -90,12 +90,13 @@
 				<option value-"AXL">Adult Extra Large</option>
 			</select>
 
-            <!-- TODO: allow user to add players to sign up more than one kid at a time -->
+            
             </br>
             </br>
             <input type="submit">
             </form>
         </section>
+		<p>Payment is $30 and $55 for two or more</p>
         <?php include_once "PHP/footer.php" ?>
     </body>
 </html>

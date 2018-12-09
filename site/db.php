@@ -27,6 +27,8 @@
 		}
 	}
 
+	//Checks if a user with $email already exists
+	//Returns true if one does exist, otherwise false
 	function has_user($email) {
 		global $db;
 		$pdo = $db;
@@ -41,7 +43,8 @@
 		return false;
 	}
 
-
+	//Checks if password is correct for the user
+	//Returns the user's id if it is correct, otherwise false
 	function is_password_correct($email, $password) {
 		global $db;
 		$pdo= $db;
@@ -68,6 +71,8 @@
 		
 	}
 
+	//Checks if the user has coach permissions
+	//Returns true if they do, false otherwise
 	function isCoach($user_id){
 		global $db;
 
@@ -101,6 +106,8 @@
 		}
 	}
 
+	//Checks if a user has admin permissions by their Id
+	//Returns true if they do false otherwise
 	function isAdmin($user_id){
 		global $db;
 
@@ -134,12 +141,15 @@
 		}
 	}
 
+	//Checks if a user is logged in by checking the name session variable
+	//If they are not they are sent to the login page
 	function ensure_logged_in() {
-		if(!isset($_SESSION["name"])) {
+		if(!isset($_SESSION['user_id'])) {
 			redirect("login.php", "You must log in before you can view that page.");
 		}
 	}
 
+	//Redirects a user to the specified url
 	function redirect($url, $flash_message = NULL) {
 		if($flash_message) {
 			$_SESSION["flash"] = $flash_message; 
@@ -148,6 +158,7 @@
 		die;
 	}
 
+	//Registers a user into the database
 	function register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2) {
 		global $db;
 		$pwdHash = crypt($password, $email);
@@ -180,6 +191,7 @@
 		echo "Success";
 	}
 
+	//Gets user info by user id
 	function get_user_info($user_id){
 		global $db;
 
@@ -198,6 +210,7 @@
 		}
 	}
 
+	//Updates a user's contact information
 	function update_contact_info($user_id, $password, $phone, $email, $phone2, $email2){
 		global $db;
 		$phash = crypt($password, $email); //if email changes then the hash wont be correct when they login again so hash/password has to change along with the email
@@ -218,6 +231,7 @@
 		}
 	}
 
+	//Gets Scheduled games
 	function get_team_schedule(){
 		global $db;
 
@@ -240,6 +254,7 @@
 		}
 	}
 
+	//Gets schedule for the current season
 	function get_current_team_schedule(){
 
 		global $db;
@@ -262,6 +277,8 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+
+	//Gets the team from their id
 	function get_team_from_teamid($team_id){
 		global $db;
 
@@ -287,6 +304,8 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+
+	//Gets the team id from the team name
 	function get_teamid_from_teamName($team_name){
 	 
 		global $db;
@@ -313,6 +332,8 @@
 			echo "Failed: " . $e->getMessage(); 
 		}
 	}
+
+	//Gets all the names of all the teams
 	function get_all_team_names(){
 		global $db;
 
@@ -336,6 +357,7 @@
 		}
 	}
 
+	//Gets the "best" team for the user based on their age, gender and the sport registering for
 	function assign_team($age, $gender, $sport) {
 		global $db;
 		try{
@@ -361,6 +383,7 @@
 		}
 	}
 
+	//Registers a player by inserting into Players table
 	function register_player($firstName, $lastName, $age, $teamId, $gender, $birthdate, $userId, $seasonId, $shirtSize) {
 		global $db;
 		try{
@@ -383,6 +406,7 @@
 		}
 	}
 
+	//Gets all Users
 	function get_all_users() {
 		global $db;
 		try{
@@ -397,6 +421,7 @@
 		}
 	}
 
+	//Gets all players for the current season
 	function get_current_players() {
 		global $db;
 		try{
@@ -411,11 +436,12 @@
 		}
 	}
 
+	//Gets all teams for the current season
 	function get_current_teams() {
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId WHERE Season.IsCurrent = '1'";
+			$sql = "SELECT Team.Id, Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId WHERE Season.IsCurrent = '1'";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
@@ -425,6 +451,7 @@
 		}
 	}
 
+	//Adds a game to the scheduledGame table
 	function add_scheduled_game($team_name, $opponent, $isHome, $date, $time){
 		global $db;
 		$team_id = get_teamid_from_teamName($team_name); //grabs id # 
@@ -445,6 +472,8 @@
 		}
 	
 	}
+
+	//Updates a Scheduled game
 	function update_scheduled_game($id, $team_name, $opponent, $isHome, $date, $time){
 		global $db;
 		$team_id = get_teamid_from_teamName($team_name); //grabs id # 
@@ -468,6 +497,7 @@
 		}
 	}
 
+	//Deletes a scheduled game
 	function delete_scheduled_game($id){
 		global $db;
 		try{
@@ -484,6 +514,7 @@
 		}
 	}
 
+	//Gets all players that are registered by a certain user
 	function get_all_players_for_user($userId) {
 		global $db;
 		try{
@@ -498,6 +529,8 @@
 			echo "Failed to get players: " . $e->getMessage();
 		}
 	}
+
+	//Gets all news 
 	function get_all_news(){
 		global $db;
 		try{
@@ -513,6 +546,7 @@
 		}
 	}
 
+	//Deletes a player from the db
 	function delete_player($playerId) {
 		global $db;
 		try {
@@ -526,6 +560,7 @@
 		}
 	}
 
+	//Gets all urgent information from the db
 	function get_urgent(){
 	global $db;
 		try{
@@ -540,6 +575,8 @@
 			echo "Failed to get players: " . $e->getMessage();
 		}
 	}
+
+	//Updates an urgent message in the Urgent table
 	function update_urgent_message($id, $message, $active){
 		global $db;
 		try {
@@ -555,6 +592,7 @@
 		}
 	}
 
+	//Gets the current Season's year
 	function get_current_season() {
 		global $db;
 		try {
@@ -575,6 +613,10 @@
 		}
 	}
 
+	//Creates a new season
+	//Makes current season not current
+	//Inserts the new season as current
+	//Creates new teams for all the team types for this year
 	function create_new_season($year) {
 		end_current_season();
 		global $db;
@@ -593,6 +635,7 @@
 		}
 	}
 
+	//Creates a team for all $teamTypes for the year $year
 	function create_teams($teamTypes, $year) {
 		global $db;
 		foreach($teamTypes as $teamType) {
@@ -610,6 +653,7 @@
 		}
 	}
 
+	//Gets all team types
 	function get_all_team_types() {
 		global $db;
 		try {
@@ -628,6 +672,7 @@
 		}
 	}
 
+	//Makes the current season not current
 	function end_current_season() {
 		global $db;
 		try {
@@ -640,6 +685,7 @@
 		}
 	}
 
+	//Deletes news by id
 	function delete_news($id){
 		
 		global $db;
@@ -654,6 +700,7 @@
 		}
 	}
 
+	//Edits a player's team
 	function edit_player_team($playerId, $newTeamId) {
 		global $db;
 		try{
@@ -668,6 +715,7 @@
 		}
 	}
 
+	//Makes a user a coach
 	function make_coach($userId) {
 		global $db;
 		try{
@@ -681,6 +729,7 @@
 		}
 	}
 
+	//Removes coaching permissions from a user
 	function remove_coach($userId) {
 		global $db;
 		try{
@@ -694,6 +743,7 @@
 		}
 	}
 
+	//Makes a user an admin
 	function make_admin($userId) {
 		global $db;
 		try{
@@ -707,6 +757,7 @@
 		}
 	}
 
+	//Removes admin permissions from a user
 	function remove_admin($userId) {
 		global $db;
 		try{
