@@ -64,9 +64,9 @@
 				<option value="football">Football</option>
 			</select> <br/>
             <label>First Name:</label>
-            <input type="text" name="firstName"/>
+            <input type="text" name="firstName" required/>
             <label>Last Name:</label>
-            <input type="text"/ name="lastName">
+            <input type="text"/ name="lastName" required>
             </br>
             <label>Gender:</label>
             <select name="gender">
@@ -75,10 +75,10 @@
 			</select>
             </br>
             <label>Birthdate:</label>
-            <input type="date" name="birthdate"/>
+            <input type="date" name="birthdate" required/>
             </br>
 			<label>Age As Of 6/1:</label>
-			<input type="number" name="age" /> <br/>
+			<input type="number" name="age" min="4" max="18" required/> <br/>
             <label>Shirt size:</label>
             <select name="shirtSize">
 				<option value="YS">Youth Small</option>
