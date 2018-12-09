@@ -6,7 +6,7 @@ html, body{
     min-height: 100vh;
 }
 #menu{
-    height: 59px;
+    /*height: 59px;*/
 }
 #logo{
     background-color: #182899;
@@ -147,7 +147,7 @@ nav > ul{
 
 nav{
     background: white;
-    height: 30px;
+    /*height: 30px;*/
 }
 
 .menu-invisible{
@@ -213,7 +213,7 @@ img{
 /* mobile styling */
 @media screen and (max-width:1055px) {
     #menu {
-        height: 118px;
+        /*height: 118px;*/
     }
 }
 
@@ -227,7 +227,7 @@ img{
     }
 
     #menu {
-        height: 480px;
+        /*height: 480px;*/
     }
     nav > ul > li {
         display:block;
@@ -235,7 +235,21 @@ img{
     img {
         max-width: 300px;
     }
+    .submenu{
+        position:relative;
+        
+    }
+    #baseball-submenu {
+        width: 100%;
+    }
 
+    #flag-football-submenu {
+        width: 100%;
+    }
+
+    #team-submenu {
+        width: 100%;
+    }
     #content {
         width: auto;
         padding: 10px;
@@ -249,5 +263,12 @@ img{
 @media screen and (max-width:370px) {
     #logout {
         top: 0px;
+    }
+}
+@media screen and (max-width:1150px) {
+    #content {
+        margin: 0;
+        padding: 10px;
+        overflow-x: scroll;
     }
 }
