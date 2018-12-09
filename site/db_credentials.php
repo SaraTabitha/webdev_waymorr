@@ -1,3 +1,6 @@
+<!--
+	Credentials to the db when connecting
+-->
 <?php
 	define("DB_SERVER", "localhost");
 	define("DB_NAME", "team7");

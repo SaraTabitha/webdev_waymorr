@@ -1,3 +1,7 @@
+<!--
+	The about us page contains information about Way-Morr Youth Sports
+	A user does not need to be logged in to view this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

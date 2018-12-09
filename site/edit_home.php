@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<!--
+	This page is where and admin can edit information displayed on the home page
+	A user must be logged in and have admin permissions to view this page
+-->
+<!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
 <body>

@@ -1,3 +1,8 @@
+<!--
+	This is the log in page for the User
+	A user is able to log in or click the link to register an account
+	A user does not need to be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

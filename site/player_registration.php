@@ -1,3 +1,9 @@
+<!--
+	This page is for a user to register kids to play
+	When a form is submitted the player is automatically registered for a team
+	Can be changed by admin in the roster page
+	User must be logged in to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
@@ -20,8 +26,8 @@
 				if($sport == "" || $firstName == "" || $lastName == "" || $gender == "" || $birthdate == "" || $shirtSize == "") {
 					$error = "Please fill in all required fields";
 				} else {
-					if($age > 18) {
-						$error = "Sorry. A player must be 18 years old or younger in order to play on a team";
+					if($age > 18 || $age < 4) {
+						$error = "Sorry. A player must be between 4 and 18 to play";
 					} else {
 						if($gender == "Male") {
 							$gender = 1;

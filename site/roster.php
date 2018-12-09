@@ -1,3 +1,8 @@
+<!--
+	This page is for an admin to be able to see all players that have been registered for the current season
+	An admin can also change a player's team or delete a player
+	A User must be logged in and be an admin to access this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
@@ -18,6 +23,10 @@
 		?>
 		<?php
 			include_once 'db.php';
+			ensure_logged_in();
+			if($_SESSION['isAdmin'] == false) {
+				redirect("home.php", "You do not have permission to view this page");
+			}
 			$currentPlayers = get_current_players();
 			$currentTeams = get_current_teams();
 		?>

@@ -1,3 +1,7 @@
+<!--
+	This is the home page for the senior flag football Division
+	A user doesn't need to be logged in to view this page
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

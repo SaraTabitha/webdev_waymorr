@@ -1,3 +1,8 @@
+<!--
+	This is the team schedule page
+	A User must be logged in to access this page
+	If a User has coach permissions, they are able to add and edit games
+-->
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>

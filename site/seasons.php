@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<!--
+	This page is for an admin to start a new Season
+	When an admin starts a new season, a new team for each team type is created in the database
+	A User must be logged in and be an Admin to view this page
+-->
+<!DOCTYPE html>
 <html lang="en">
     <?php include_once 'PHP/head.php' ?>
 <body>
@@ -6,6 +11,10 @@
 	<?php 
 		$error = "";
 		include_once "db.php"; 
+		ensure_logged_in();
+		if($SESSION_['isAdmin'] == false) {
+			redirect("home.php", "You do not have permission to view this page");
+		}
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$error = "";
 			$year = $_POST['year'];
