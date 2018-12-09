@@ -35,7 +35,7 @@
 					<?php 
 						function team_dropdown($selected){
 							?>
-							<select name="team">
+							<select required name="team">
 								<?php
 									$team_names = get_current_teams(); // only current season team names
 									foreach($team_names as $row){
@@ -57,7 +57,7 @@
 						function isHome_dropdown($selected){
 							$dropdown_name = "isHome";
 							?>
-							<select name="<?= $dropdown_name ?>">
+							<select required name="<?= $dropdown_name ?>">
 								<option value="true" 
 								<?php
 								if($selected){
@@ -133,7 +133,7 @@
 										<td><?php 
 											//opponent text field
 											?>
-											<input type="text" name ="opponent" value="<?= $opponent?>"/>
+											<input required type="text" name ="opponent" value="<?= $opponent?>"/>
 										</td>
 										<td><?php 
 											//yes or no dropdown
@@ -142,13 +142,13 @@
 										<td><?php
 											//date datepicker
 											?>
-											<input type="date" name ="date"  value="<?= $gameDate ?>"/>
+											<input required type="date" name ="date"  value="<?= $gameDate ?>"/>
 										</td>
 										<td>
-											<input type="time" name ="time"  value="<?= $gameTime ?>"/>
+											<input required type="time" name ="time"  value="<?= $gameTime ?>"/>
 										</td>
 										<td>
-											<select name="action">
+											<select required name="action">
 												<option value="update">Update</option>
 												<option value="delete">Delete</option>
 											</select>
@@ -192,7 +192,7 @@
 						</tr>
 						<tr>
 							<td>
-								<select name="team">
+								<select required name="team">
 								<?php
 									$team_names = get_current_teams(); // only current season team names
 									foreach($team_names as $row){
@@ -206,22 +206,22 @@
 							</select>
 							</td>
 							<td>
-								<input type="text" name="opponent" value=""/>
+								<input required type="text" name="opponent" value=""/>
 							</td>
 							<td>
-								<select name="isHome">
+								<select required name="isHome">
 									<option value="true">Yes</option>
 									<option value="false">No</option>
 								</select>
 							</td>
 							<td>
-								<input type="date" name ="date"  value=""/>
+								<input required type="date" name ="date"  value=""/>
 							</td>
 							<td>
-								<input type="time" name ="time"  value=""/>
+								<input required type="time" name ="time"  value=""/>
 							</td>
 							<td>
-								<input type="submit" value="Add Game"/>
+								<input  required type="submit" value="Add Game"/>
 							</td>
 
 						</tr>

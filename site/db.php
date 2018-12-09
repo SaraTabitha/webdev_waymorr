@@ -284,7 +284,8 @@
 
 		try{
 			$pdo = $db;
-			$sql = "SELECT `Name` FROM `Team` WHERE `Id` LIKE :teamid";
+			
+			$sql = "SELECT Team.Name FROM `Team` INNER JOIN Season ON Team.SeasonId = Season.Id WHERE (Season.IsCurrent = '1') AND (Team.Id = :teamid)";
 			$statement = $pdo->prepare($sql);
 			$statement->bindParam("teamid", $team_id);
 			$statement->execute();
@@ -312,7 +313,7 @@
 
 		try{
 			$pdo = $db;
-			$sql = "SELECT `Id` FROM `Team` WHERE `Name` LIKE :teamname";
+			$sql = "Select Team.Id FROM `Team`INNER JOIN Season ON Team.SeasonId = Season.Id WHERE (Season.IsCurrent = '1') AND ( Team.Name = :teamname)";
 			$statement = $pdo->prepare($sql);
 			$statement->bindParam("teamname", $team_name);
 			$statement->execute();
