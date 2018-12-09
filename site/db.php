@@ -242,7 +242,7 @@
 
 		try{
 			$pdo = $db;
-			$sql = "SELECT * FROM ScheduledGame INNER JOIN Team ON ScheduledGame.TeamId = Team.Id INNER JOIN Season ON Team.SeasonId = Season.Id WHERE Season.IsCurrent = '1'";
+			$sql = "SELECT ScheduledGame.Id,`TeamId`,`Opponent`,`IsHomeGame`,`Date`,`Time` FROM ScheduledGame INNER JOIN Team ON ScheduledGame.TeamId = Team.Id INNER JOIN Season ON Team.SeasonId = Season.Id WHERE Season.IsCurrent = '1'";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
