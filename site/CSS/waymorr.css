@@ -45,6 +45,13 @@ h1 {
     -webkit-text-stroke-color: #182899;
     text-shadow: 2px 4px navy;
 }
+h2, h3, h4, h5, h6 {
+    color: #182899;
+   
+}
+p, h2, h3, h4, h5, h6, label{
+    font-family: sans-serif;
+}
 @font-face{
     font-family: NCAA Purdue Boilermakers;
     src: url("../Font/NCAA Purdue Boilermakers.otf") format("opentype");
@@ -67,7 +74,7 @@ h1 {
 }
 
 input, select, textarea {
-    border: 1px solid blue;
+    border: 1px solid navy;
     padding: 6px;
     border-radius: 4px;
     margin-top: 5px;
@@ -193,11 +200,20 @@ a{
 }
 
 table,th,td{
-    border: 1px solid black;
-    border-collapse: collapse;
+    /*border: 1px solid black;
+    border-collapse: collapse;*/
 }
 th, td{
-    padding: 10px;
+    padding: 4px;
+    color:black;
+    font-family:sans-serif;
+}
+th{
+    border-radius: 4px;
+    background: lightblue;
+}
+tr:nth-child(odd){
+    background: aliceblue;
 }
 
 .success {

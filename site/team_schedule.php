@@ -83,7 +83,7 @@
 							<th>Date</th>
 							<th>Time</th>
 							<th>Edit</th>
-							<th></th>
+							<th style="display:none;"></th>
 						</tr>
 						
 						<?php
@@ -170,7 +170,7 @@
 							<th>Home</th>
 							<th>Date</th>
 							<th>Time</th>
-							<th></th>
+							<th style="display:none;"></th>
 						</tr>
 						<tr>
 							<td>
