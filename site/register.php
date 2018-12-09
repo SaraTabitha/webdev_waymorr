@@ -104,7 +104,7 @@
             <input type="text" name="lastName" required/>
             </br>
             <label>Phone Number:</label>
-            <input type="text" name="phone" max-length="12" required/>
+            <input type="text" name="phone" maxlength="12" required/>
             </br>
             <label>Mailing Address:</label>
             <input type="text" name="mailingAddress" required/>
