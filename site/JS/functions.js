@@ -45,3 +45,7 @@ function loadUrgentMessage(){
     ajax.send();
 }
 loadUrgentMessage();
+
+/*function add_news_success() {
+    $("add_news_message").innerHTML = "Your news has successfully been added to the homepage.";
+}*/
