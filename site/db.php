@@ -441,7 +441,7 @@
 		global $db;
 		try{
 			$pdo = $db;
-			$sql = "SELECT Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId WHERE Season.IsCurrent = '1'";
+			$sql = "SELECT Team.Id, Name FROM Team INNER JOIN Season ON Season.Id = Team.SeasonId WHERE Season.IsCurrent = '1'";
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
