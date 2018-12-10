@@ -9,21 +9,27 @@
                     redirect("edit_home.php");
     }
 
-    
+
     $urgent = get_urgent();
 
-    foreach($urgent as $row){
-        $message = $row['Message'];
-        $active = $row['Active'];
-    }
+        foreach($urgent as $row){
+            $arr = array();
+            $message = $row['Message'];
+            array_push($arr, $message);
+            $active = $row['Active'];
 
-    if($active === '1'){
-        $myJSON =  json_encode($message);
+        }
+        if($active === '1'){
+               $myJSON =  json_encode($arr);
+               echo $myJSON;
+       }
+        else{
+        $arr = array();
+        array_push($arr, " ");
+        $myJSON = json_encode($arr);
         echo $myJSON;
-    }
-    else{
-        $myJSON = json_encode("");
-        echo $myJSON;
-    }
-    
+        }
+
+        
+
 ?>

@@ -46,7 +46,11 @@
     <?php
     } //end if REQUEST == 'delete_news'
     } //end if request_method == POST
+    } //end of if = user is admin
 
+    else{ //else user is not an admin
+    redirect("home.php");
+    }
     ?>
 
     <h3>Edit Urgent Message </h3>
@@ -84,7 +88,7 @@
         <br>
         <label for="content"><strong>Content: </strong></label>
         <br>
-        <textarea  required cols="75" rows="4" name="content"></textarea>
+        <textarea required cols="75" rows="4" name="content"></textarea>
         <br>
         <input type="submit" name="add_news" value="Add News" />
     </form>
@@ -109,14 +113,7 @@
         <input type="submit" name="delete_news" value="Delete" />
     </form>
 
-    <?php
-
-    } //end of if = user is admin
-
-    else{ //else user is not an admin
-    redirect("home.php");
-    }
-    ?>
+   
 
     <?php include_once "PHP/footer.php" ?>
 </body>

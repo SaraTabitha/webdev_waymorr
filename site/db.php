@@ -1,8 +1,8 @@
-<!--
-	The db file for connecting to the database and the home to database functions used
--->
+
 
 <?php
+
+	//The db file for connecting to the database and the home to database functions used
 	session_start();
 	require_once('db_credentials.php');
 
@@ -211,19 +211,22 @@
 	}
 
 	//Updates a user's contact information
-	function update_contact_info($user_id, $password, $phone, $email, $phone2, $email2){
+	function update_contact_info($user_id, $password, $phone, $email, $phone2, $email2, $first2, $last2){
 		global $db;
 		$phash = crypt($password, $email); //if email changes then the hash wont be correct when they login again so hash/password has to change along with the email
 		try{
 			$pdo = $db;
-			$sql = "UPDATE `User` SET `PHash`= :phash,`Email`= :email,`PhoneNumber`= :phone,`Email2`= :email2,`Phone2`= :phone2 WHERE `Id` LIKE :userid";
+			$sql = "UPDATE `User` SET `PHash`= :phash,`Email`= :email,`PhoneNumber`= :phone,`Email2`= :email2,`Phone2`= :phone2, `FirstName2`= :first2, `LastName2`= :last2 WHERE `Id` LIKE :userid";
 			$statement = $pdo->prepare($sql);
 			$statement->bindParam("phash", $phash);
 			$statement->bindParam("email", $email);
 			$statement->bindParam("phone", $phone);
 			$statement->bindParam("email2", $email2);
 			$statement->bindParam("phone2", $phone2);
+			$statement->bindParam("first2", $first2);
+			$statement->bindParam("last2", $last2);
 			$statement->bindParam("userid", $user_id);
+
 			$statement->execute();
 		}
 		catch(PDOException $e){
@@ -570,7 +573,13 @@
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
-			return $result;
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+			
 
 		} catch(PDOException $e) {
 			echo "Failed to get players: " . $e->getMessage();
@@ -793,6 +802,7 @@
 			echo "Failed to remove user admin: " . $e->getMessage();
 		}
 	}
+	//add news to the db with an image url
 	function add_news_with_image($title,$date, $url, $content){
 		global $db;
 		try{
@@ -806,6 +816,7 @@
 		}
 	
 	}
+	//adds news to the homepage without an image url
 	function add_news($title,$date, $content){
 		global $db;
 		try{
