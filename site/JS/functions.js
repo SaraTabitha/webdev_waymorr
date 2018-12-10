@@ -28,6 +28,7 @@ $.each(submenu_slug_array, function( index, slug){
 });
 
 
+//grabs the urgent message from the urgent.php file and displays it on the homepage
 function loadUrgentMessage(){
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {

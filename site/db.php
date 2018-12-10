@@ -799,6 +799,7 @@
 			echo "Failed to remove user admin: " . $e->getMessage();
 		}
 	}
+	//add news to the db with an image url
 	function add_news_with_image($title,$date, $url, $content){
 		global $db;
 		try{
@@ -812,6 +813,7 @@
 		}
 	
 	}
+	//adds news to the homepage without an image url
 	function add_news($title,$date, $content){
 		global $db;
 		try{
