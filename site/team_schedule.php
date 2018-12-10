@@ -47,7 +47,7 @@
 								}
 							}
 						} else {
-							//redirect("team_schedule.php");
+							redirect("team_schedule.php");
 						}
 					}
 				}
