@@ -32,8 +32,11 @@ function loadUrgentMessage(){
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.readyState + ", " + this.status);
+            
             var myObj = JSON.parse(this.responseText); //if returning a json object
-
+            //console.log(myObj[0]);
+            
             if (document.getElementById("urgentMessage") != null) {
                 document.getElementById("urgentMessage").innerHTML = myObj;
             }
@@ -45,7 +48,3 @@ function loadUrgentMessage(){
     ajax.send();
 }
 loadUrgentMessage();
-
-/*function add_news_success() {
-    $("add_news_message").innerHTML = "Your news has successfully been added to the homepage.";
-}*/

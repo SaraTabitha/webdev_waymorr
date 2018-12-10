@@ -1,8 +1,8 @@
-<!--
-	The db file for connecting to the database and the home to database functions used
--->
+
 
 <?php
+
+	//The db file for connecting to the database and the home to database functions used
 	session_start();
 	require_once('db_credentials.php');
 
@@ -570,7 +570,13 @@
 			$statement = $pdo->prepare($sql);
 			$statement->execute();
 			$result = $statement->fetchAll();
-			return $result;
+			if($result){
+				return $result;
+			}
+			else{
+				return false;
+			}
+			
 
 		} catch(PDOException $e) {
 			echo "Failed to get players: " . $e->getMessage();
