@@ -10,9 +10,10 @@
         <?php include_once "PHP/header.php" ?>
 		<?php
 			include_once("db.php");
+			$error = "";
 
 			if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+				$error = "";
 			  $email = $_POST["email"];
 			  $password = $_POST["password"];
 			  $retypePassword = $_POST["retypePassword"];
@@ -110,6 +111,7 @@
 		?>
         <h1>Registration</h1>
         <a href="login.php"> Go to Login </a>
+		<p class="error"><?php echo $error;?></p>
         <form method="post" action="register.php">
         <label> E-mail: </label>
         <input type="email" name="email" required/>
