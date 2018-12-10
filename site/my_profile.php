@@ -80,7 +80,7 @@
                     <br>
                     <label for="pass"><strong>Password: </strong></label><input required name="pass" type="password">
                     <br>
-                    <input type="submit" value="Edit Contact Info" />
+                    <input type="submit" value="Edit Info" />
                 </form>
                 <h2>Registered Players</h2>
                 <?php 
