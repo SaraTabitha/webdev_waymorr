@@ -38,6 +38,28 @@
 					$error = "Your password must be at least 8 characters long and contain a capital letter, a number, and some other character";
 			  } else {
 					register_user($email, $password, $firstName, $lastName, $phone, $address, $firstName2, $lastName2, $phone2, $email2);
+					$_SESSION['user_id'] = get_user_id($email); //sets user_id to the Id in the User table
+
+					if(isCoach($_SESSION['user_id'])){
+						$_SESSION['isCoach'] = true;
+						
+					}
+					else{
+						$_SESSION['isCoach'] = false;
+						
+					}
+
+					if(isAdmin($_SESSION['user_id'])){
+						$_SESSION['isAdmin'] = true;
+						
+					
+					}
+					else{
+						$_SESSION['isAdmin'] = false;
+						
+					}
+
+					redirect("home.php");
 			  }
 			}
 

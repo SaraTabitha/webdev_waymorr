@@ -55,9 +55,9 @@
         
         <form method="post" action="login.php">
         <label>E-mail:</label>
-        <input type="text" name="email"/>
+        <input type="email" name="email" required/>
         <label>Password:</label>
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
         <br>
         <input type="submit" />
         </form>

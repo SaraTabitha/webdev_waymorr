@@ -188,7 +188,7 @@
 		$params  = [$firstName, $lastName, $email, $phone, $pwdHash, $firstName2, $lastName2, $email2, $phone2, FALSE, FALSE];
 		$statement->execute($params);
 		
-		echo "Success";
+		
 	}
 
 	//Gets user info by user id
@@ -617,6 +617,28 @@
 			}
 		} catch(PDOException $e) {
 			echo "Failed to get current season: " . $e->getMessage();
+		}
+	}
+
+	//Gets user id from email
+	function get_user_id($email) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "SELECT Id FROM User WHERE Email = :email";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("email", $email);
+			$statement->execute();
+			$rows = $statement->fetchAll();
+			if($rows) {
+				foreach($rows as $row) {
+					return $row['Id'];
+				}
+			} else { 
+				return false;
+			}
+		} catch(PDOException $e) {
+			echo "Failed to get user id: " . $e->getMessage();
 		}
 	}
 
