@@ -42,7 +42,10 @@
                     $email = $_POST["email"];
                     $phone2 = $_POST["phone2"];
                     $email2 = $_POST["email2"];
-                    update_contact_info($_SESSION['user_id'], $password, $phone, $email, $phone2, $email2);
+					$first2 = $_POST['first2'];
+					$last2 = $_POST['last2'];
+
+                    update_contact_info($_SESSION['user_id'], $password, $phone, $email, $phone2, $email2, $first2, $last2);
 					?>
                     <p style="color:green;">Contact info successfully updated.</p>
                     <?php
@@ -67,7 +70,9 @@
                     <label for="email"><strong>Email: </strong></label><input name="email" type="text" value="<?php echo $email; ?>">
                     <br>
                     <h2>Parent/Guardian 2</h2>
-                    <p><strong>Name: </strong><?php echo $first2 . " " . $last2; ?></p> 
+                   
+					<label for="first2"><strong>First: </strong></label><input name="first2" type="text" value="<?php echo $first2; ?>">
+					<label for="last2"><strong>Last: </strong></label><input name="last2" type="text" value="<?php echo $last2; ?>">
                     <h3>Contact Info</h3>
                     <label for="phone2"><strong>Phone: </strong></label><input name="phone2" type="text" value="<?php echo $phone2; ?>">
                     <label for="email2"><strong>Email: </strong></label><input name="email2" type="text" value="<?php echo $email2; ?>">
