@@ -818,4 +818,19 @@
 			echo "Failed to remove user admin: " . $e->getMessage();
 		}
 	}
+
+	function get_emails_for_team($teamId) {
+		global $db;
+		try {
+			$pdo = $db;
+			$sql = "SELECT User.Email, User.Email2 FROM Player INNER JOIN Season ON Player.SeasonId = Season.Id INNER JOIN User ON Player.UserId = User.Id WHERE Player.TeamId = :teamId";
+			$statement = $pdo->prepare($sql);
+			$statement->bindParam("teamId", $teamId);
+			$statement->execute();
+			$rows = $statement->fetchAll();
+			return $rows;
+		} catch(PDOException $e) {
+			echo "Failed to get emails: " . $e->getMessage();
+		}
+	}
 ?>

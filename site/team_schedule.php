@@ -22,13 +22,34 @@
 				* Handle Add Team Form Submission
 				*/
 				if($_SERVER["REQUEST_METHOD"] == "POST"){
-					$team = $_POST["team"];
-					$opponent = $_POST["opponent"];
-					$isHome = $_POST["isHome"];
-					$date = $_POST["date"];
-					$time = $_POST["time"];
+					if(isset($_REQUEST['addGame'])) {
+						$team = $_POST["team"];
+						$opponent = $_POST["opponent"];
+						$isHome = $_POST["isHome"];
+						$date = $_POST["date"];
+						$time = $_POST["time"];
 
-					add_scheduled_game($team, $opponent, $isHome, $date, $time);
+						add_scheduled_game($team, $opponent, $isHome, $date, $time);
+					}
+					if(isset($_REQUEST['sendMessage'])) {
+						$team = $_POST['messageTeam'];
+						$teamId = get_teamid_from_teamName($team);
+						$message = $_POST['message'];
+						$message = wordwrap($message,70);
+						$emails = get_emails_for_team($teamId);
+						if($emails) {
+							foreach($emails as $email) {
+								$email1 = $email['Email'];
+								$email2 = $email['Email2'];
+								mail($email1, "Message From Way-Morr", $message);
+								if($email2 != "") {
+									mail($email2, "Message From Way-Morr", $message);
+								}
+							}
+						} else {
+							//redirect("team_schedule.php");
+						}
+					}
 				}
 				
 				?>
@@ -221,13 +242,29 @@
 								<input required type="time" name ="time"  value=""/>
 							</td>
 							<td>
-								<input  required type="submit" value="Add Game"/>
+								<input  required type="submit" value="Add Game" name="addGame"/>
 							</td>
 
 						</tr>
 					 </table>
 					 </form>
-					 
+					 <h2>Send Message To Team</h2>
+					 <form method="post" action="team_schedule.php">
+					 <select required name="messageTeam">
+						<?php
+							$team_names = get_current_teams(); // only current season team names
+							foreach($team_names as $row){
+								$t_name = $row['Name'];
+
+								?>
+								<option value="<?= $t_name ?>" ><?php echo $t_name; ?></option>
+								<?php
+							}
+						?>
+					</select>
+					<input type="textarea" required name="message" />
+					<input type="submit" value="Send Message" name="sendMessage" />
+					</form>
 				<?php
 				}
 				else{
