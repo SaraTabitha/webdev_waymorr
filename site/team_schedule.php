@@ -109,7 +109,7 @@
 							<th>Date</th>
 							<th>Time</th>
 							<th>Edit</th>
-							<th style="display:none;"></th>
+							<th ></th>
 						</tr>
 						
 						<?php
@@ -209,7 +209,7 @@
 							<th>Home</th>
 							<th>Date</th>
 							<th>Time</th>
-							<th style="display:none;"></th>
+							<th ></th>
 						</tr>
 						<tr>
 							<td>
